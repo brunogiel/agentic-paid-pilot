@@ -56,7 +56,3 @@ Cada etapa produce su doc en el proyecto: `0.plan.md`, `1.research.md`, `2.plan-
 ## Doctrina
 
 Thin harness / fat skills: el orquestador solo coordina, gatea y guía; el trabajo vive en las child skills. Skills como method-call (parametrizadas, sin valores hardcodeados), pasos marcados `[LATENT]/[DET]/[FANOUT]`, scripts en `scripts/` (no embebidos), success metrics por skill.
-
-## Créditos
-
-Los 6 roles de `roles/` son una adaptación al español/LATAM de un proyecto con licencia MIT. Ver [`NOTICE.md`](NOTICE.md).
