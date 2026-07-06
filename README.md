@@ -1,58 +1,58 @@
-# `lanzar-piloto` — playbook de adquisición pagada
+# lanzar-piloto: probá un negocio nuevo con publicidad, sin gastar de más
 
-Kit de skills para validar un negocio/vertical nuevo con un **piloto de adquisición pagada**: un orquestador thin (`SKILL.md`) + 13 child skills, una por sub-etapa. El proceso es siempre el mismo (**0.plan → 1.research → 2.experimento → 3.ejecución**), con un gate de budget que permite cortar antes de gastar todo.
+¿Tenés una idea de negocio o un servicio nuevo y querés saber si la gente lo va a pagar, antes de invertir un montón en publicidad? Este kit le enseña a tu asistente de IA (ChatGPT, Claude, Cursor) un método paso a paso para armar y correr un **piloto**: una prueba chica y controlada de publicidad en Google y Meta, con un tope de plata para cortar a tiempo si no funciona.
 
-## Por qué este kit (y no otro prompt de agencia)
+No es una app ni un programa que instalás. Son instrucciones que tu asistente de IA lee y sigue con vos.
 
-El kit tiene un punto de vista sobre **dónde se gana o se pierde un piloto**. El orden de las palancas, de la que más mueve la aguja a la que menos:
+## Cómo funciona, en criollo
 
-1. **¿El mercado responde a la oferta?** Es lo único que el piloto realmente testea. Si no, nada de lo de abajo importa.
-2. **Canal** (a dónde va el budget). La decisión más cara; se pelea antes de repartir la plata, no después.
-3. **Oferta / posicionamiento** (ángulo, anchor de precio).
-4. **Claridad de la landing.** Clara + con prueba le gana a "linda".
-5. **Higiene de keywords / negativas.** Plata real, pero es un impuesto de eficiencia (~10-20%), no un multiplicador 2-5x.
+El método va en 4 etapas. En cada una tu asistente te muestra lo que hizo y te pide el OK antes de seguir (no dispara solo):
 
-Y una distinción que ordena el gasto: **matrícula vs impuesto evitable**. La *matrícula* es la plata en lo que no podías saber de antemano (el precio del experimento, se paga sí o sí). El *impuesto evitable* son los clics en basura que cualquier operador neguea el día cero (jobs / salary / free / course / how-to). La matrícula se paga; el impuesto se evita con la lista de negativas del día cero.
+1. **Plan.** Arranca el proyecto y define lo básico: qué vendés, a quién, cuánta plata ponés.
+2. **Research.** Investiga el mercado: qué busca la gente en Google, qué anuncios corren tus competidores, qué tan grande es la audiencia. Al final te dice si vale la pena seguir o no.
+3. **Experimento.** Arma los números (cuánto te cuesta conseguir un cliente contra cuánto vale ese cliente) y define el tope de plata del piloto.
+4. **Ejecución.** Escribe los avisos, arma las páginas, configura las campañas y el seguimiento, y deja todo listo para prender.
 
-## Cómo se usa
+Después de prender hay una etapa 5 opcional, para ir mejorando las campañas con el tiempo.
 
-Es un kit para tu asistente de IA (Claude Code, Cursor, ChatGPT). Copiá/pegá (o apuntá) el orquestador o la skill que necesites y arrancá:
+## La idea de fondo (esto es lo que lo hace distinto)
 
-- **End-to-end:** invocá `lanzar-piloto` ("lancemos un piloto para X"). El orquestador hace el kickoff, scaffoldea el proyecto y encadena las etapas con checkpoints (te pide OK en cada parada).
-- **Suelto:** cada child skill se puede correr sola ("hacé el swipe de ads de competidores de X", "modelá el funnel CAC/LTV de Y").
+La mayoría gasta mal en un piloto. El método ordena **dónde se gana o se pierde la plata**, de lo que más importa a lo que menos:
 
-## Glosario rápido
+1. ¿El mercado responde a tu oferta? Es lo único que el piloto realmente prueba.
+2. ¿En qué canal ponés la plata? La decisión más cara de todas.
+3. Tu oferta y cómo la presentás.
+4. Que la página sea clara (clara le gana a "linda").
+5. La limpieza de palabras clave. Importa, pero es lo de menos peso.
 
-- **Orquestador thin:** el `SKILL.md` raíz. Solo coordina y gatea; no hace el trabajo, lo delegan las child skills.
-- **Child skill:** cada `s*/SKILL.md`, una sub-etapa con su propia lógica (research, copy, tracking, etc.).
-- **Gate de budget:** un checkpoint donde se enciende solo una parte del budget (ej. la primera tanda) y el resto queda apagado hasta que los números dan OK. Permite cortar antes de gastar todo.
-- **Backbone (`templates/_backbone.md`):** el contrato de invariantes (marca, oferta, segmentos, budget) que los entregables de ejecución respetan sin re-derivar.
-- **`[LATENT]` / `[DET]` / `[FANOUT]`:** etiquetas de tipo de paso — razonamiento del modelo / paso determinístico (mecánico) / fan-out a subagentes en paralelo.
+Y una distinción que te ahorra plata: hay gasto que es **matrícula** (el precio de aprender algo que no podías saber de antes, se paga sí o sí) y gasto que es **impuesto evitable** (plata tirada en clics basura que se corta desde el día uno). El método te ayuda a no confundirlos.
 
-## Las 4 etapas (+ operar)
+## Cómo lo usás
 
-```
-0 · PLAN        s0-plan-piloto
-1 · RESEARCH    s1a-research-mercado · s1b-kw-research-google
-                s1c-swipe-ads-competidores · s1d-sizing-audiencias-meta
-2 · EXPERIMENTO s2a-modelar-funnel · s2b-disenar-experimento
-3 · EJECUCIÓN   s3a-copy-landings · s3b-build-landings · s3c-spec-campanias
-                s3d-creativos-ads · s3e-setup-tracking · s3f-pre-launch-validation
-4 · OPERAR      (punteros a roles/: search-query-analyst + campaign-auditor)
-```
+Es para usar con tu asistente de IA. Le señalás el archivo que necesites y le pedís que lo siga:
 
-Cada etapa produce su doc en el proyecto: `0.plan.md`, `1.research.md`, `2.plan-piloto.md`, `3.ejecucion-piloto.md`, + `workspace/`. Hay un ejemplo ilustrativo de un `1.research.md` completo en `ejemplo/`.
+- **Todo de una:** le decís "lancemos un piloto para [tu idea]" y te lleva de la mano por las 4 etapas.
+- **Suelto:** también podés pedir una sola parte ("investigá los competidores de X", "armá los números de Y").
 
-## Piezas del kit
+## Qué hay adentro
 
-| Carpeta | Qué hay |
+| Carpeta | Qué es |
 |---|---|
-| `SKILL.md` | el orquestador (conductor thin, gateado) |
-| `templates/` | skeletons reusables de los 4 docs de etapa + `_backbone.md` |
-| `roles/` | los 6 roles de paid media (google ads, meta ads, creative, search query analyst, campaign auditor, tracking) que las etapas de ejecución y operación invocan |
-| `ejemplo/` | una corrida ilustrativa (`1.research.md` de un vertical hipotético) |
-| `s*/` | las 13 child skills (cada una con su `SKILL.md`, algunas con `scripts/`) |
+| `SKILL.md` | el método principal, el que coordina todo |
+| `s0` a `s3f` | cada paso del método, uno por archivo |
+| `roles/` | 6 "expertos" de publicidad (Google, Meta, textos de aviso, medición) que el método consulta cuando los necesita |
+| `templates/` | plantillas en blanco de los documentos que se van llenando |
+| `ejemplo/` | una corrida de muestra (un negocio inventado), para ver cómo queda |
 
-## Doctrina
+## Un par de términos que vas a ver
 
-Thin harness / fat skills: el orquestador solo coordina, gatea y guía; el trabajo vive en las child skills. Skills como method-call (parametrizadas, sin valores hardcodeados), pasos marcados `[LATENT]/[DET]/[FANOUT]`, scripts en `scripts/` (no embebidos), success metrics por skill.
+- **Piloto:** una prueba chica y controlada de publicidad, con un tope de plata.
+- **Tope (o gate) de budget:** un freno. Prendés solo una parte de la plata y el resto queda apagado hasta que los números den bien. Sirve para cortar antes de gastar todo.
+- **Landing:** la página a la que llega la gente cuando hace clic en un aviso.
+- **CAC / LTV:** lo que te cuesta conseguir un cliente contra lo que ese cliente te deja en total. Si el segundo es bastante más grande que el primero, el negocio cierra.
+
+---
+
+## Para técnicos
+
+Kit de *skills* (formato `SKILL.md`) para asistentes de IA. Un orquestador *thin* + 13 *child skills*, una por sub-etapa, con doctrina thin-harness / fat-skills: el orquestador solo coordina y gatea, el trabajo vive en las child skills. Pasos marcados `[LATENT]` (razonamiento), `[DET]` (determinístico) y `[FANOUT]` (subagentes en paralelo). Scripts en `scripts/` (no embebidos), parámetros sin hardcodear, success metrics por skill. Pensado para Claude Code / Cursor, pero cualquier asistente que lea markdown sirve.
