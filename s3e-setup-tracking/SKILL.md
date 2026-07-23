@@ -63,6 +63,13 @@ Produce el plan de implementación de tracking del piloto: qué crear en cada pl
 
 **Paso 5 [LATENT] — Abiertos que bloquean el tracking.** Listar explícito: accesos que el usuario tiene que gestionar (cuenta Meta BM con dominio añadido, acceso al GTM container, API key si hay CAPI manual). Marcar cuál bloquea el encendido.
 
+## Aprendizajes de terreno
+
+- **Un evento canónico por acción; toda la lógica de tags vive en GTM.** Cero `fbq`/`gtag` sueltos disparando directo desde el código del sitio. Si el mismo botón/acción dispara 2 eventos por error (ej. un hero que disparaba 2 conversiones por 1 sola captura real), el bug casi siempre es que la lógica de cuándo disparar quedó embebida en el código en vez de vivir toda en GTM con un solo trigger/tag por acción real.
+- **event_id de deduplicación Pixel/CAPI = el UUID nativo del evento de la herramienta de booking**, cuando la hay (ej. Calendly). Si el evento de reserva ya trae un UUID propio disponible tanto en el postMessage del lado cliente como en el webhook del lado servidor, usar ESE id como `event_id` de dedup: no hace falta generar ni sincronizar nada aparte entre pixel y CAPI, el mismo UUID llega solo a los dos lados.
+- **La API de stats del pixel de Meta tiene retención dura de ~28 días** (`/{pixel_id}/stats` devuelve vacío para rangos más viejos). Para reconstrucciones históricas más allá de esa ventana, no hay atajo de API: hay que ir a Events Manager a mano o reconstruir desde reportes escritos previos.
+- **Los fallbacks de UI de Google Ads pueden mentir cuando la grilla principal está bloqueada** (ad blocker, canvas no legible). Las estimaciones derivadas de vistas agregadas (Overview, Billing, último dato conocido) pueden diferir bastante de la grilla real, incluyendo casos donde la diferencia decide si un gate ya se había cruzado o no. Google además corrige datos hacia arriba con lag de reporting (el dato de ayer no es final el mismo día). **Regla: la grilla real manda; un fallback agregado es una estimación de emergencia, no un reemplazo, y hay que decirlo así en cualquier reporte que la use.** Si hay forma de que un humano confirme con captura de la grilla real, esa captura pesa más que cualquier fallback.
+
 ## Output esperado
 
 `workspace/setup-tracking.md`: inventario de IDs (en blanco si hay que crearlos, con el ID real cuando existan) + tabla de objetos a crear por plataforma + orden de implementación con dependencias + checklist QA (PASS/FAIL por ítem) + UTM naming convention + abiertos bloqueantes. El doc es el runbook que el usuario ejecuta en su sesión de configuración de cuentas.

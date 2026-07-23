@@ -35,6 +35,16 @@ Convierte el piloto en un experimento falsable: qué creemos, cuánta plata arri
 
 **Paso 6:** devolver al orquestador hipótesis + umbrales + gate para el checkpoint de fin de Etapa 2.
 
+## Aprendizajes de terreno: kill criteria y condiciones de relanzamiento
+
+En un piloto real, un gate cerró sin agendas y el veredicto de cierre se improvisó recién al final, porque el gate original solo tenía un techo de presupuesto, no kill criteria explícitos. Corrección para todo piloto nuevo: **el Paso 2 (success metrics y kill criteria) no está completo si el kill criteria es solo "se acabó la plata".** Sumar en `2.plan-piloto.md` una sección **"Kill criteria y condiciones de relanzamiento"** (usar la plantilla del `templates/2.plan-piloto.md`) con:
+- Qué número **mata** el gate (ej. "$X gastados con 0 agendas ICP").
+- Qué número lo **pausa parcialmente** (un canal/campaña puntual, no el gate entero).
+- Qué señal lo **escala** (justifica ampliar presupuesto antes del techo original).
+- Bajo qué condiciones un gate matado dispara **relanzamiento** en vez de cierre total: el negocio queda validado pero el ángulo/oferta/canal no, y hay hipótesis concreta de qué cambiar (ver `s4a-operar-gates` Paso 6 para cómo se opera el relanzamiento en sí, incluyendo la regla dura de A/B externo coherente, nunca split interno con los mismos ads).
+
+Esto se acuerda con el partner ANTES de prender, no se decide en caliente al cerrar (`s4a-operar-gates` Paso 1 lo verifica como prerequisito).
+
 ## Output esperado
 
 `2.plan-piloto.md` completo (contexto, objetivo, hipótesis, KPIs con umbrales, flujos, premortem) y `workspace/_backbone.md` poblado como contrato para `s3a`-`s3f`.

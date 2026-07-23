@@ -6,14 +6,13 @@ No es una app ni un programa que instalás. Son instrucciones que tu asistente d
 
 ## Cómo funciona, en criollo
 
-El método va en 4 etapas. En cada una tu asistente te muestra lo que hizo y te pide el OK antes de seguir (no dispara solo):
+El método va en 5 etapas. En cada una tu asistente te muestra lo que hizo y te pide el OK antes de seguir (no dispara solo):
 
 1. **Plan.** Arranca el proyecto y define lo básico: qué vendés, a quién, cuánta plata ponés.
 2. **Research.** Investiga el mercado: qué busca la gente en Google, qué anuncios corren tus competidores, qué tan grande es la audiencia. Al final te dice si vale la pena seguir o no.
-3. **Experimento.** Arma los números (cuánto te cuesta conseguir un cliente contra cuánto vale ese cliente) y define el tope de plata del piloto.
+3. **Experimento.** Arma los números (cuánto te cuesta conseguir un cliente contra cuánto vale ese cliente) y define el tope de plata del piloto, incluido qué número lo mata, lo pausa o lo escala.
 4. **Ejecución.** Escribe los avisos, arma las páginas, configura las campañas y el seguimiento, y deja todo listo para prender.
-
-Después de prender hay una etapa 5 opcional, para ir mejorando las campañas con el tiempo.
+5. **Operación y cierre.** Ya con las campañas prendidas: te arma el reporte periódico de "cómo venimos", te ayuda a decidir si seguís, pivotás o matás el gate cuando se acaba la plata, y cuando el piloto termina te deja el postmortem + un checklist para apagar todo lo que quedó corriendo.
 
 ## La idea de fondo (esto es lo que lo hace distinto)
 
@@ -39,7 +38,7 @@ Es para usar con tu asistente de IA. Le señalás el archivo que necesites y le 
 | Carpeta | Qué es |
 |---|---|
 | `SKILL.md` | el método principal, el que coordina todo |
-| `s0` a `s3f` | cada paso del método, uno por archivo |
+| `s0` a `s4b` | cada paso del método, uno por archivo |
 | `roles/` | 6 "expertos" de publicidad (Google, Meta, textos de aviso, medición) que el método consulta cuando los necesita |
 | `templates/` | plantillas en blanco de los documentos que se van llenando |
 | `ejemplo/` | una corrida de muestra (un negocio inventado), para ver cómo queda |
@@ -55,4 +54,4 @@ Es para usar con tu asistente de IA. Le señalás el archivo que necesites y le 
 
 ## Para técnicos
 
-Kit de *skills* (formato `SKILL.md`) para asistentes de IA. Un orquestador *thin* + 13 *child skills*, una por sub-etapa, con doctrina thin-harness / fat-skills: el orquestador solo coordina y gatea, el trabajo vive en las child skills. Pasos marcados `[LATENT]` (razonamiento), `[DET]` (determinístico) y `[FANOUT]` (subagentes en paralelo). Scripts en `scripts/` (no embebidos), parámetros sin hardcodear, success metrics por skill. Pensado para Claude Code / Cursor, pero cualquier asistente que lea markdown sirve.
+Kit de *skills* (formato `SKILL.md`) para asistentes de IA. Un orquestador *thin* + 15 *child skills*, una por sub-etapa, con doctrina thin-harness / fat-skills: el orquestador solo coordina y gatea, el trabajo vive en las child skills. Pasos marcados `[LATENT]` (razonamiento), `[DET]` (determinístico) y `[FANOUT]` (subagentes en paralelo). Scripts en `scripts/` (no embebidos), parámetros sin hardcodear, success metrics por skill. Pensado para Claude Code / Cursor, pero cualquier asistente que lea markdown sirve.

@@ -57,5 +57,17 @@ Ad → Landing (pain hero + CTA único, Pixel + GA4 desde el 1er click)
 ```
 **Métrica madre = cost-per-qualified-lead.** Fit-rate por campaña. Todo a un Sheet con UTMs.
 
+## Modelo económico
+> Cómo cobramos nosotros por el piloto. Elegir UNA opción (o una combinación explícita) y dejar los números concretos, no la categoría sola.
+
+| Opción | Cómo funciona | Cuándo tiene sentido | Este piloto |
+|---|---|---|---|
+| **Finder's fee** | Monto fijo (o 1x el ticket mensual) al momento de la firma del cliente cerrado | Ciclo de venta corto, valor del cliente conocido de antemano | {{sí/no + monto}} |
+| **Retainer %** | % del revenue mensual del cliente cerrado, mientras dure la relación | Queremos alineación de largo plazo con quien cierra, no solo el lead puntual | {{sí/no + %}} |
+| **Revenue share** | % de un pago único (ej. proyecto de cleanup) al cerrar | Servicios con un componente de proyecto grande además del recurrente | {{sí/no + %}} |
+
+- **Sin costo upfront** (regla por default salvo que se acuerde otra cosa): cobramos solo cuando el prospect firma, no por lead entregado.
+- **Salidas explícitas**: quien cierra puede salir a costo cero si nadie firma en el plazo del piloto; nosotros cortamos si el ad spend supera el presupuesto acordado. Sin lock-in de ningún lado.
+
 ## Dueño del proyecto
 {{Quién opera los canales}} operan paid/infra/contenido; {{quién cierra}} cierra y sirve. Modelo: {{ }}. Piloto = {{N}} días desde el encendido.

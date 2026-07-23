@@ -39,6 +39,12 @@ Produce el copy customer-facing de cada variante de landing, listo para pegar en
 
 **Paso 6:** checkpoint con el usuario (lidera lo creativo): presentar el copy de a una landing, no el paquete cerrado.
 
+## Aprendizajes de terreno
+
+- **Claims defendibles en la primera call.** Todo claim de equipo, capacidad o seguridad se evalúa contra "¿esto se sostiene cuando el lead llama?", no solo contra si suena bien en el ad/landing. Un claim de "equipo" que en realidad es una sola persona operando se rompe en el primer contacto humano. Resolución tipo: en vez de bajar el claim del todo o mentir headcount, usar un frame intermedio defendible (ej. "tu especialista asignada del equipo") que sostiene el beneficio (backup, respaldo) sin prometer algo que no existe todavía.
+- **El nombre de la oferta puede matar el click aunque el mensaje esté bien.** Testear el naming de la oferta en sí (no solo el copy alrededor): un nombre que suena a auditoría o a compromiso (ej. "Revisión Gratis" leído como "van a encontrar mis errores") genera defensiva antes de que el lead lea el resto. Si hay dudas sobre cómo suena una oferta, chequearlo con la lente del destinatario antes de escribir el resto de la landing alrededor.
+- **BOFU sin asumir memoria.** No dar por hecho que el lead recuerda haber empezado el flujo ("Tu revisión sigue abierta", "ya casi estabas"): si el tracking del pool es flojo o pasó tiempo, ese supuesto puede ser falso y suena raro. Preferir una oferta autoexplicativa que se entiende sola, sin depender de que el lead recuerde una interacción previa.
+
 ## Output esperado
 
 `workspace/landing/landing-prompt.md` con el copy completo de cada landing (todas las secciones), los slots por vertical, el mapa de message match y el draft de privacy/terms por idioma.
