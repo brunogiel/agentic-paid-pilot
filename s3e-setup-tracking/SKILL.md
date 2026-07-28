@@ -39,6 +39,7 @@ Produce el plan de implementación de tracking del piloto: qué crear en cada pl
 - **Google Ads:** conversion action primaria (category Lead, count One per click, window 30d, include in Conversions = YES, attribution Last click hasta tener 300+ conv/mes para Data-driven); conversion action secundaria (form started o WhatsApp click, NOT include in Conversions); conversion linker tag.
 - **Meta Pixel:** pixel ID; PageView en todas las páginas; Lead event en thank-you; domain verification en BM.
 - **Meta CAPI:** ¿sí o no? Si el form manda datos via n8n: event_id generado en el form + mismo event_id en el payload n8n → Meta CAPI endpoint. Checklist de dedup en Test Events tab.
+- **Session recordings + heatmaps (capa cualitativa, recomendado):** una herramienta gratuita tipo Microsoft Clarity, instalada como un tag más de GTM (cero config extra). No mide conversiones: muestra QUÉ hacen las sesiones. En el piloto real fue la única fuente que probó que la gente navegaba largo y avanzaba por la página sin agendar (cuello de oferta/confianza, no de tráfico ni de tracking); GA4 y el CRM solo daban conteos. Barato de instalar el día 0, imposible de reconstruir después.
 - **UTM naming convention:** `utm_source` (google/meta/linkedin), `utm_medium` (cpc), `utm_campaign` (nombre de la campaña, slug), `utm_content` (nombre del ad group / adset), `utm_term` (keyword para Google). Tabla de ejemplos concretos para este piloto.
 
 **Paso 3 [DET] — Orden de implementación.** Secuencia con dependencias explícitas:

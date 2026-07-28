@@ -60,6 +60,6 @@ Para un panel robusto, barrer con varias lentes (jobs/educación/DIY, competidor
 ## Troubleshooting
 
 - **Planner sin volumen para un idioma en un geo local chico:** común que el search en un idioma minoritario a nivel local sea casi nulo; la lectura correcta suele ser "ese idioma se captura por Meta (audiencia), no por Google (búsqueda)". Anotarlo, no forzar la campaña.
-- **PMax:** NO recomendarlo para el piloto (necesita volumen de conversiones para entrenar + es caja negra que no deja medir fit-rate por término). A Fase 2.
+- **PMax:** default recomendado para un piloto chico es dejarlo apagado, sin volumen de conversiones para entrenar y sin visibilidad de fit-rate por término es difícil auditarlo temprano. Con volumen de conversiones ya generado (o si el piloto escala), vale reevaluar sumarlo en paralelo a Search, no en reemplazo.
 - **CPC del benchmark ≠ CPC del planner:** mandar el del planner para el geo; el benchmark genérico solo como sanity check.
 - **Auditar negativas con el search-terms report una vez live, no a ciegas:** el informe de términos de búsqueda esconde ~⅔ de los clics en "Otros términos de búsqueda" (no itemizables); de lo visible, clasificar ICP/no-ICP/dudoso y cruzar contra las negativas cargadas para cazar gaps **y over-blocks** (negativas que matan ICP). Nombres de competidores sueltos de 1 impresión = whack-a-mole, no perseguir uno por uno; si hay patrón, un token estructural (`reviews`) tapa la familia.

@@ -23,7 +23,7 @@ Convierte el research en números: dado el spend, cuántos clientes entran y a q
 
 ## Flujo
 
-**Paso 1 [LATENT] — Dibujar el embudo.** Definir las etapas concatenadas del funnel real del piloto (ej. impresión → click → landing → CTA → form completo → pasa prefiltro → show-up V1 → V2 → cierre). Cada negocio tiene su cadena; no copiar una plantilla ajena a ciegas (¿hay 1 call o 2 visitas? ¿form o Calendly?).
+**Paso 1 [LATENT] — Dibujar el embudo.** Definir las etapas concatenadas del funnel real del piloto (ej. impresión → click → landing → CTA → form completo → pasa prefiltro → show-up V1 → V2 → cierre). Cada negocio tiene su cadena; no copiar una plantilla ajena a ciegas (¿hay 1 call o 2 visitas? ¿form o Calendly?). Elegí la arquitectura en `reference/arquitecturas-funnel.md` antes de modelar: la cadena del funnel sale de ahí, no se inventa etapa por etapa a ojo.
 
 **Paso 2 [LATENT] — Tasas por escenario.** Para cada etapa, 4 columnas: pesimista / benchmark de mercado / realista / optimista. **Cada tasa con fuente citada** (Unbounce, WordStream, Calendly, etc.) o marcada "estimación interna — validar en el piloto". El CPC sale del kw research (planner real), no del benchmark genérico.
 

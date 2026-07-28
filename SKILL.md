@@ -80,7 +80,7 @@ Triggea con frases como: "tengo una idea para X", "quiero validar algo", "no sé
 |---|---|---|---|
 | **0 · Plan** | `s0-plan-piloto` | `0.plan.md` + scaffold `1/2/3` | objetivo + budget + quién cierra cerrados |
 | **1 · Research** | `s1a-research-mercado`, `s1b-kw-research-google`, `s1c-swipe-ads-competidores`, `s1d-sizing-audiencias-meta` | `1.research.md` + `workspace/research/` | checklist de mercado da AVANZAR |
-| **2 · Experimento** | `s2a-modelar-funnel`, `s2b-disenar-experimento` | `2.plan-piloto.md` + `workspace/_backbone.md` | LTV/CAC ≥ 1 en realista + gate de budget definido |
+| **2 · Experimento** | `s2a-modelar-funnel`, `s2b-disenar-experimento`, `s2c-spec-stack` | `2.plan-piloto.md` + `workspace/_backbone.md` + spec de stack | LTV/CAC ≥ 1 en realista + gate de budget definido + **el spec de stack se aprueba antes de construir** |
 | **3 · Ejecución** | `s3a-copy-landings`, `s3b-build-landings`, `s3c-spec-campanias`, `s3d-creativos-ads`, `s3e-setup-tracking`, `s3f-pre-launch-validation` | `3.ejecucion-piloto.md` + `workspace/` | pre-launch validation en verde → encender Etapa 1 |
 | **4 · Operación y cierre** | `s4a-operar-gates`, `s4b-postmortem` | `workspace/operacion-gates.md` + `entregables/reportes-{cadencia}/` + `postmortem.md` | veredicto de gate (seguir/pivotar/matar) → si mata o valida del todo, cierre con checklist operativo en verde |
 
@@ -100,7 +100,8 @@ Triggea con frases como: "tengo una idea para X", "quiero validar algo", "no sé
 **Etapa 2 — Experimento** `[LATENT]`
 1. `s2a-modelar-funnel` → modelo CAC/LTV con 4 escenarios (xlsx con fórmulas vivas).
 2. `s2b-disenar-experimento` → hipótesis, KPIs/success metrics, **gate de budget**, premortem, y el `_backbone.md` (contrato de invariantes). Escribe `2.plan-piloto.md`.
-3. Checkpoint: presentar LTV/CAC + el gate + las hipótesis. Esperar OK.
+3. `s2c-spec-stack` → PRD del stack de implementación: qué componentes de `componentes/` se usan y con qué opción de menú, qué queda para growth/vision. Estructura BMAD adaptada (Executive Summary → Classification → Success Criteria → Scope MVP/growth/vision → User Journeys → Requirements específicos → Functional Requirements → Non-Functional). Escribe `2.plan-piloto.md § Spec de stack`.
+4. Checkpoint: presentar LTV/CAC + el gate + las hipótesis + el spec de stack. **Gate: el spec de stack se aprueba antes de construir** (la Etapa 3 no arranca sin este OK). Esperar OK.
 
 **Etapa 3 — Ejecución** (secuencial, con checkpoints)
 1. `s3a-copy-landings` → copy por landing/idioma → si hay más de un ángulo posible, invocar `copy-battle` para decidir el ganador antes de construir → checkpoint.
@@ -126,6 +127,7 @@ s1c-swipe-ads-competidores/ Meta Ad Library (Apify) → swipe + creatividades   
 s1d-sizing-audiencias-meta/ Graph API delivery_estimate → tamaños por capa     [+scripts]
 s2a-modelar-funnel/        CAC/LTV, 4 escenarios, Excel fórmulas vivas          [+scripts]
 s2b-disenar-experimento/   hipótesis + KPIs + gate de budget + premortem + _backbone
+s2c-spec-stack/            PRD del stack (BMAD adaptado) → qué componentes se usan y cómo
 s3a-copy-landings/         copy por vertical/idioma + message-match
 s3b-build-landings/        Stitch→Next/Vercel + motor ?v= + form + webhook lead
 s3c-spec-campanias/        estructura Google+Meta + fichas MCP/Chrome
@@ -135,6 +137,38 @@ s3f-pre-launch-validation/ punch-list / pre-validador + encendido por gate
 s4a-operar-gates/          kill criteria + reporte periódico + comunicación partners + relanzamiento
 s4b-postmortem/            postmortem canónico + revisión con lentes distintas + checklist de cierre + destilado
 ```
+
+16 child skills en total (el mapa de arriba). Aparte, `componentes/` guarda 6 piezas reusables de implementación de funnel que **no son etapas**: se consumen desde `s2c-spec-stack` (que decide cuáles usa este piloto) o sueltas, a pedido del usuario. Ver "Catálogo de componentes" abajo.
+
+## Catálogo de componentes
+
+Además del pipeline de 5 etapas, el kit expone 6 piezas reusables en `componentes/` (no son etapas del pipeline: son bloques de implementación de funnel que un piloto puede necesitar o no, según su diseño):
+
+| Componente | Qué resuelve en 1 línea |
+|---|---|
+| `componentes/lead-magnet-y-nurture/` | Lead magnet (guía/PDF) entregado por mail + cadena de nurture automática vía ESP. |
+| `componentes/cold-outreach/` | Outreach frío por email a una lista propia, con ramp de volumen y stop-loss automático. |
+| `componentes/ab-y-personalizacion/` | A/B testing de landings + personalización dinámica del hero por segmento/campaña. |
+| `componentes/captura-y-crm/` | Captura del lead (form/webhook) con validación server-side + alta en un CRM. |
+| `componentes/agendamiento/` | Booking de la llamada/reunión de venta, con webhook de vuelta al CRM. |
+| `componentes/canal-whatsapp/` | Canal de WhatsApp (bridge + router) para atender o calificar leads por chat. |
+
+**Regla de ruteo, nunca arrancar por la herramienta.** Cuando el usuario pida un componente suelto ("quiero un lead magnet", "configurame el WhatsApp del piloto", "armame la cadena de mails", "necesito agendamiento para X"), el orquestador:
+1. Rutea al `componentes/{nombre}/SKILL.md` correspondiente.
+2. Arranca por los **first principles** del componente (qué problema resuelve, cuándo conviene, cuándo NO, qué necesita sí o sí para funcionar): "esto te sirve si..., necesita sí o sí...".
+3. Con eso claro, recomienda **una** opción del menú de stack sugerido de ese componente, con el porqué.
+4. Recién con el OK del usuario, baja a la receta (`reference.md`) de la opción elegida.
+
+Nunca al revés: no se arranca eligiendo la herramienta (ej. "usemos tal ESP") sin pasar antes por los first principles y la recomendación razonada.
+
+### Modo explícito: definir todo primero, implementar por etapas
+
+Activar cuando el usuario quiere cerrar TODO el stack de una sola sentada, pero construir de a poco (por tiempo, por budget, o porque algunos componentes dependen de decisiones que todavía no están firmes):
+- `s2c-spec-stack` puede escribir el spec completo (los 6 componentes de `componentes/`, no solo los que se implementan ya) en una sola corrida.
+- Cada componente que el spec deja sin implementar todavía queda marcado explícito en el doc, ej. `[PENDIENTE: cold-outreach, se arma semana 3]`.
+- La implementación (Etapa 3 + componentes sueltos) sigue yendo etapa por etapa como siempre, tachando `[PENDIENTE]` a medida que se resuelve cada uno.
+
+Triggea con frases como: "definamos todo el stack ahora, después lo vamos armando", "quiero el spec completo pero implementar de a poco", "cerremos las decisiones y vamos construyendo por etapas".
 
 ## Log de corrida
 

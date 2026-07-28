@@ -62,12 +62,19 @@ Checklist determinístico de todos los pre-requisitos técnicos, legales y opera
 - La campaña está en **pausa** (no activa todavía) con los settings correctos: geo, idioma, budget diario, bid strategy, Final URLs.
 - El adset de Meta está en **pausa** con el targeting correcto: geo, edad mínima, capa de audiencia (sin IDs fantasma), presupuesto diario.
 - Los ads están aprobados por la plataforma (sin rechazos pendientes de políticas).
+- **QA visual en la UI del ads manager de lo cargado por API/CSV:** abrir el preview real de cada ad y confirmar imagen correcta, copy completo, Final URL y placement. La carga programática puede diferir de lo que se cree que subió (imagen equivocada, texto truncado, duplicados silenciosos); el JSON de respuesta de la API no reemplaza mirar el ad renderizado.
 - El naming de campañas y adsets coincide con `campañas.md` (0 objetos sin nombre).
 - El budget total del piloto suma exacto al del backbone; el gate de Etapa 1 está seteado como límite de campaña o en el doc de control del usuario.
 
 **Paso 6 [DET] — Abiertos de Etapa 1 en creativos.** Revisar `workspace/creativos.md` sección "Abiertos": confirmar que ningún abierto marcado como bloqueante de Etapa 1 sigue sin resolver.
 
 **Paso 7 [LATENT] — Emitir resultado.** Tabla de todos los ítems con estado (PASS / FAIL / N/A). Si hay ≥ 1 FAIL: listar los FAIL con la acción exacta para resolverlo y quién la destraba. No proponer encender hasta que todos los ítems de Etapa 1 sean PASS o N/A. Si todo está en verde: emitir "VALIDACIÓN EN VERDE — listo para encender Etapa 1" y esperar el OK explícito del usuario.
+
+**Paso 8 [DET] — Runbook de encendido (recién con el OK).** El encendido no es "activar todo y ver": es un mini-runbook escrito ANTES de tocar el primer switch:
+- **Orden de encendido explícito**, objeto por objeto (qué campaña/adset se activa primero y cuál queda apagado hasta pasar el gate), con el cap de gasto del primer día calculado como suma de los budgets diarios que se prenden (≤ el cap acordado).
+- **Verificación post-switch inmediata**: cada campaña encendida queda en estado "Apto"/activo de verdad (no "pendiente de revisión" ni pausada a nivel superior; gotcha real: un ad ACTIVE dentro de una campaña PAUSED no sirve nada).
+- **Chequeo a las 2-24 h**: impresiones > 0 en cada campaña, gasto acorde al budget (ni cero ni disparado), sin rechazos tardíos de ads (las plataformas re-revisan al activar).
+- **Rollback simple**: si algo está mal, pausar a nivel campaña y volver al checklist; nunca corregir settings con la campaña sirviendo.
 
 **Post-launch (una vez encendido):** la optimización continua del piloto vive en `../roles/search-query-analyst.md` (search terms, negativos, n-grams semana a semana); si el piloto arranca sobre una cuenta de ads ya existente, pasarla antes por `../roles/campaign-auditor.md` para no heredar deuda de configuración.
 

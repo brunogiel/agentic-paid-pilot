@@ -85,6 +85,7 @@ tengas una).
 - **Validar interés primero** (SMS/llamada/mensaje corto) en vez de tirarle contactos fríos al que cierra. Un lead que nunca responde al que cierra (ni llamada ni SMS) es una señal de que el hand-off fue prematuro.
 - **Lead tibio declarado ("quiero aprender, no contratar todavía") va a nurture, no a call.** No forzar el hand-off con alguien que ya dijo que no está listo.
 - Si un lead sale del funnel normal (agendó, se dio de baja), sacarlo del retargeting de inmediato para no seguir gastando en alguien que ya no es el target del gasto.
+- **Trackear el fit-rate aparte del CPL**: % de leads capturados que están dentro del ICP (vertical IN + floor de facturación), en un tracker propio (una planilla alcanza). Un CPL barato con fit-rate bajo es plata quemada disfrazada de eficiencia; el veredicto del gate se lee sobre leads ICP, no sobre capturas brutas.
 
 **Paso 5 [LATENT]: Decisión de gate al agotarse el presupuesto.** Con el gate en o cerca del techo, decidir con evidencia (no a ojo):
 - **Seguir**: hay señal real (agendas, close rate) que justifica ampliar el gate.

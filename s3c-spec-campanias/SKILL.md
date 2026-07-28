@@ -29,7 +29,7 @@ Traduce el backbone + research a una spec operativa que cualquiera (el usuario a
 
 **Paso 1 [DET] — Reconciliación de budget.** Tabla única autoritativa: campaña → total → diario (total ÷ días) → % del piloto. Marcar qué prende en Etapa 1 (gate) y qué queda apagado hasta pasar el gate. Cualquier cifra vieja en otros docs: se ignora, manda esta tabla.
 
-**Paso 2 [LATENT] — Settings comunes Google.** Para cuenta cold con budget chico: Search only (Display/partners OFF), Manual CPC (sin Smart Bidding sin historial), bottom of page, exact + phrase (sin broad), location "Presence" (no "Presence or interest"), rotate indefinitely las primeras 2 semanas, 2 conversiones (calificado primaria + submit secundaria). PMax NO en el piloto.
+**Paso 2 [LATENT] — Settings comunes Google.** Default recomendado para una cuenta cold con budget chico: Search only (Display/partners OFF), Manual CPC, bottom of page, exact + phrase, location "Presence" (no "Presence or interest"), rotate indefinitely las primeras 2 semanas, 2 conversiones (calificado primaria + submit secundaria), PMax en pausa. Por qué: sin historial de conversiones ni volumen, Smart Bidding y PMax no tienen señal para optimizar bien y tienden a sobrepagar o salirse del ICP, y broad match sin negativas maduras diluye un budget chico. Con historial o volumen ya validado, vale evaluar Smart Bidding, sumar broad match o correr PMax en paralelo.
 
 **Paso 3 [LATENT] — Ficha por campaña Google.** Por campaña: geo, idioma, bid de arranque (del planner), budget, Final URL (dominio del idioma correcto), ad groups con keywords + match + volumen, negativas compartidas + propias, notas de bid por ad group.
 
@@ -38,6 +38,10 @@ Traduce el backbone + research a una spec operativa que cualquiera (el usuario a
 **Paso 5 [LATENT] — Abiertos que bloquean.** Listar arriba del doc los `[ABIERTO]` que impiden ejecutar (IDs de conversión, ad account, medio de pago) y quién los destraba. No inventar IDs.
 
 **Paso 6:** checkpoint con el usuario; la spec queda lista para cargar campañas **en pausa** (encender es de `pre-launch-validation`).
+
+### Ruta de carga masiva Google: CSV + Google Ads Editor
+
+Cuando hay decenas de objetos (o la UI web está gateada, ej. por un ad blocker), la carga de Google NO se hace a mano campo por campo: un script genera el CSV con el formato de import de Google Ads Editor directamente desde esta spec (campañas + ad groups + keywords + RSAs + negativas en un solo archivo), se importa en Editor, se revisa en pantalla lo que el import va a crear, y recién ahí se postea. Gotchas: los exports de Editor salen en UTF-16 (abrirlos con el encoding correcto antes de diffear), y el import es también la vía sana para bajar CPCs en bulk (un CSV chico de fix, no ediciones sueltas en la UI).
 
 ## Output esperado
 
