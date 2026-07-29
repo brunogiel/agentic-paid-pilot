@@ -59,7 +59,7 @@ Cada componente sigue la misma lógica que el resto del kit: primero te explica 
 | `componentes/` | las 6 piezas de implementación de funnel de la tabla de arriba, una carpeta por componente |
 | `roles/` | 6 "expertos" de publicidad (Google, Meta, textos de aviso, medición) que el método consulta cuando los necesita |
 | `reference/` | referencia compartida (infra y credenciales, arquitecturas de funnel) |
-| `templates/` | plantillas en blanco de los documentos que se van llenando |
+| `templates/` | plantillas en blanco de los documentos que se van llenando (incluye `kickoff-prd-template.md`, para cuando el arranque es una corrida de muchos frentes en paralelo en vez de etapa por etapa) |
 | `ejemplo/` | una corrida de muestra (un negocio inventado), para ver cómo queda |
 
 ## Un par de términos que vas a ver
