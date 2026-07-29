@@ -92,6 +92,8 @@ Triggea con frases como: "tengo una idea para X", "quiero validar algo", "no sé
 3. Si tu sistema lleva un índice de proyectos, registrar ahí el nuevo `{NEGOCIO}/` para que no quede huérfano.
 4. Checkpoint: "armé el scaffold, revisá `0.plan.md`".
 
+**Modo alternativo — kickoff de ejecución multifrente (desatendido):** cuando lo que necesitás no es avanzar una etapa a la vez sino dejar TODO listo para encender de una sola corrida (waves de subagentes en paralelo, gate de verificación automático por frente, degradación explícita si algo se traba), el scaffold simple de arriba no alcanza. Usá `templates/kickoff-prd-template.md`: PRD con estado verificado vs asumido, invariantes numeradas, inventario de accesos con "qué pasa si falla", tabla de frentes con ejecutor/modelo/HITL, **la regla de propagación de parkeos** (un frente parkeado degrada a todo lo que depende de él, nunca ✅ en silencio) y los cuatro estados por frente (✅/⚠/⏸/⏳). Incluye dos guardas caras de incorporar siempre: ningún dato externo entra a un modelo de presupuesto sin fuente verificable + contra-verificación por un agente distinto, y ningún artefacto generado (PDF, export) se declara "basado en" una fuente sin probar la regeneración dentro de la misma corrida.
+
 **Etapa 1 — Research** `[FANOUT]`
 1. Lanzar en paralelo (un `Agent` por skill, retorno JSON): `s1b-kw-research-google`, `s1c-swipe-ads-competidores`, `s1d-sizing-audiencias-meta`.
 2. Con esos insumos, correr `s1a-research-mercado` inline (checklist de viabilidad + competitive + síntesis "3 movimientos"). Escribe `1.research.md`.
