@@ -1,0 +1,38 @@
+{
+  "_comment": "Ejemplo ilustrativo. Para un piloto nuevo: resolvé los IDs de interés/comportamiento/geo del rubro (Graph API search: type=adTargetingCategory y type=adgeolocation) y reescribí los rows con tus propios IDs y geo. Cada row es un targeting_spec completo sin locales. locale_slice = locale id para el % de un idioma (1002 = Spanish All). Los IDs y la geo key de abajo son de ejemplo, reemplazalos.",
+  "account": "act_XXXXXXXXXXXX",
+  "api_version": "v21.0",
+  "locale_slice": 1002,
+  "rows": [
+    {
+      "label": "N1 Owners ciudad 28-55",
+      "targeting_spec": {
+        "geo_locations": {"cities": [{"key": "GEO_KEY", "radius": 25, "distance_unit": "mile"}]},
+        "behaviors": [{"id": "6002714898572"}],
+        "age_min": 28, "age_max": 55
+      }
+    },
+    {
+      "label": "N3 Owners ∩ intención (sharp)",
+      "targeting_spec": {
+        "geo_locations": {"cities": [{"key": "GEO_KEY", "radius": 25, "distance_unit": "mile"}]},
+        "flexible_spec": [
+          {"behaviors": [{"id": "6002714898572"}], "interests": [{"id": "6002884511422"}, {"id": "6003371567474"}]},
+          {"interests": [{"id": "6003236129849"}, {"id": "6003649965713"}, {"id": "6003070655893"}]}
+        ],
+        "age_min": 28, "age_max": 55
+      }
+    },
+    {
+      "label": "Vertical ejemplo",
+      "targeting_spec": {
+        "geo_locations": {"cities": [{"key": "GEO_KEY", "radius": 25, "distance_unit": "mile"}]},
+        "flexible_spec": [
+          {"behaviors": [{"id": "6002714898572"}]},
+          {"interests": [{"id": "6003088846792"}, {"id": "6003227641778"}]}
+        ],
+        "age_min": 25, "age_max": 60
+      }
+    }
+  ]
+}
