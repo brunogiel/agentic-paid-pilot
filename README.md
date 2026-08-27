@@ -4,7 +4,7 @@
 
 No es una app ni un programa que instalás. Son instrucciones que tu asistente de IA lee y sigue con vos.
 
-El kit ya no cubre solo el paid: también trae piezas listas para implementar el resto del funnel (lead magnet, captura de leads, agendamiento, WhatsApp, entre otras). Ver "Componentes implementables" más abajo.
+Lo que un piloto te deja no son clientes: es una respuesta con números atrás a la pregunta de si esto se puede vender. Cuando la respuesta es que no, el tope de plata te lo dice temprano y barato. Para eso está.
 
 ## Cómo funciona, en criollo
 
@@ -49,6 +49,16 @@ Antes de armar el gate de budget (etapa 2), el método arma un **spec de stack**
 | WhatsApp | Atender o calificar leads por WhatsApp con un bot simple. |
 
 Cada componente sigue la misma lógica que el resto del kit: primero te explica **para qué sirve y cuándo conviene** (sin nombrar una herramienta todavía), después te muestra un menú de 2 a 4 opciones con sus trade-offs, y recién con tu OK baja a la receta paso a paso de la opción elegida.
+
+## No se termina cuando termina el piloto
+
+El piloto es la puerta de entrada, no el techo. Solo **4 de los 16 pasos** existen únicamente para un piloto: el plan inicial, el diseño del experimento, la operación de gates y el postmortem. Todo lo demás te sigue sirviendo con las campañas ya andando:
+
+- **Los 6 roles de `roles/`** son de uso continuo. El auditor de cuentas y el analista de términos de búsqueda no arrancan nada: optimizan lo que ya corre. Lo mismo el rol de medición y el de textos de aviso.
+- **Los 6 componentes de `componentes/`** son piezas de funnel que se implementan una vez y quedan. No caducan cuando cierra el gate.
+- **El research de keywords, los creativos y el tracking** se rehacen cada vez que abrís una campaña nueva, sea o no un piloto.
+
+El kit está escrito alrededor de un piloto porque es donde la improvisación sale más cara. Ni el método ni las piezas se apagan cuando el piloto termina.
 
 ## Qué hay adentro
 
