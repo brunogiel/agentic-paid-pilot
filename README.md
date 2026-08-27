@@ -1,5 +1,7 @@
 # lanzar-piloto: probá un negocio nuevo con publicidad, sin gastar de más
 
+> **Sigue la metodología Lean Startup.** Construir, medir, aprender, con plata real y un tope que corta cuando los números no dan. Cada etapa cierra con una decisión de matar o perseverar, tomada con un número adelante y no con una corazonada.
+
 ¿Tenés una idea de negocio o un servicio nuevo y querés saber si la gente lo va a pagar, antes de invertir un montón en publicidad? Este kit le enseña a tu asistente de IA (ChatGPT, Claude, Cursor) un método paso a paso para armar y correr un **piloto**: una prueba chica y controlada de publicidad en Google y Meta, con un tope de plata para cortar a tiempo si no funciona.
 
 No es una app ni un programa que instalás. Son instrucciones que tu asistente de IA lee y sigue con vos.
