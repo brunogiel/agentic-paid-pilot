@@ -1,5 +1,5 @@
 {
-  "_comment": "Ejemplo ilustrativo. Para un piloto nuevo: resolvé los IDs de interés/comportamiento/geo del rubro (Graph API search: type=adTargetingCategory y type=adgeolocation) y reescribí los rows con tus propios IDs y geo. Cada row es un targeting_spec completo sin locales. locale_slice = locale id para el % de un idioma (1002 = Spanish All). Los IDs y la geo key de abajo son de ejemplo, reemplazalos.",
+  "_comment": "Ejemplo ilustrativo. Para un piloto nuevo: resolvé los IDs de interés/comportamiento/geo del rubro (Graph API search: type=adTargetingCategory y type=adgeolocation) y reescribí los rows con tus propios IDs y geo. Cada row es un targeting_spec completo sin locales. locale_slice = locale id para el % de un idioma (1002 = Spanish All). Los IDs, la cuenta y la geo key son placeholders: reemplazá TODOS antes de correr el script, o la API te va a devolver un error de parámetro inválido.",
   "account": "act_XXXXXXXXXXXX",
   "api_version": "v21.0",
   "locale_slice": 1002,
@@ -8,7 +8,7 @@
       "label": "N1 Owners ciudad 28-55",
       "targeting_spec": {
         "geo_locations": {"cities": [{"key": "GEO_KEY", "radius": 25, "distance_unit": "mile"}]},
-        "behaviors": [{"id": "6002714898572"}],
+        "behaviors": [{"id": "BEHAVIOR_ID_DUENIOS_DE_NEGOCIO"}],
         "age_min": 28, "age_max": 55
       }
     },
@@ -17,8 +17,8 @@
       "targeting_spec": {
         "geo_locations": {"cities": [{"key": "GEO_KEY", "radius": 25, "distance_unit": "mile"}]},
         "flexible_spec": [
-          {"behaviors": [{"id": "6002714898572"}], "interests": [{"id": "6002884511422"}, {"id": "6003371567474"}]},
-          {"interests": [{"id": "6003236129849"}, {"id": "6003649965713"}, {"id": "6003070655893"}]}
+          {"behaviors": [{"id": "BEHAVIOR_ID_DUENIOS_DE_NEGOCIO"}], "interests": [{"id": "INTEREST_ID_SOFTWARE_DEL_RUBRO_1"}, {"id": "INTEREST_ID_SOFTWARE_DEL_RUBRO_2"}]},
+          {"interests": [{"id": "INTEREST_ID_TEMA_DEL_RUBRO_1"}, {"id": "INTEREST_ID_TEMA_DEL_RUBRO_2"}, {"id": "INTEREST_ID_TEMA_DEL_RUBRO_3"}]}
         ],
         "age_min": 28, "age_max": 55
       }
@@ -28,8 +28,8 @@
       "targeting_spec": {
         "geo_locations": {"cities": [{"key": "GEO_KEY", "radius": 25, "distance_unit": "mile"}]},
         "flexible_spec": [
-          {"behaviors": [{"id": "6002714898572"}]},
-          {"interests": [{"id": "6003088846792"}, {"id": "6003227641778"}]}
+          {"behaviors": [{"id": "BEHAVIOR_ID_DUENIOS_DE_NEGOCIO"}]},
+          {"interests": [{"id": "INTEREST_ID_VERTICAL_1"}, {"id": "INTEREST_ID_VERTICAL_2"}]}
         ],
         "age_min": 25, "age_max": 60
       }

@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.1.1 (2026-08-28)
+
+- **El ejemplo de audiencias de Meta dice qué representa cada ID.** `audiences.example.json` traía
+  números pelados que no le servían de nada al que lo abre: había que resolverlos igual contra la
+  Graph API para saber qué eran. Ahora cada uno es un placeholder con nombre
+  (`BEHAVIOR_ID_DUENIOS_DE_NEGOCIO`, `INTEREST_ID_SOFTWARE_DEL_RUBRO_1`), que es exactamente la
+  lista de lo que tenés que ir a buscar para tu propio rubro. El comentario de arriba avisa además
+  que sin reemplazarlos la API rebota con un error de parámetro inválido, en vez de dejarte
+  descubrirlo corriendo el script.
+- Tocados: `s1d-sizing-audiencias-meta/scripts/audiences.example.json`, `VERSION`, `CHANGELOG.md`.
+
 ## 1.1.0 (2026-08-28)
 
 Los roles dejan de ser seis archivos sueltos y pasan a tener índice, y entran dos bloques de
