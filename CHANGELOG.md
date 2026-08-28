@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.1.0 (2026-08-28)
+
+Los roles dejan de ser seis archivos sueltos y pasan a tener índice, y entran dos bloques de
+oficio que hasta ahora no estaban escritos en ningún lado: cómo se producen estáticos con un
+generador de imágenes, y cómo se entrega un modelo de Excel que abre bien en la máquina del otro.
+
+- **`roles/INDEX.md`, nuevo.** Antes había que abrir los seis archivos para saber cuál servía. Ahora
+  hay una tabla con qué hace cada rol y cuándo arranca, un mapa de qué etapa del playbook consume
+  cuál (así no elegís a mano si estás corriendo el método), y la secuencia para usarlos fuera de un
+  piloto: cuenta nueva, tracking antes de encender, negativos a las dos semanas, auditoría al mes.
+- **Diez reglas para creativos generados con IA**, en `s3d-creativos-ads`. Las dos que más plata
+  ahorran: la etapa de funnel la define la audiencia del ad set y no el tono del texto (un lookalike
+  de tus clientes es TOFU, por más que el copy suene a cierre), y la foto se genera sin texto con el
+  copy sobreimpreso por código, porque cambiar una palabra no puede costar una generación nueva.
+  Además: el apaisado se resuelve con maqueta y no extendiendo con IA, no existe una regla de
+  recorte que sirva para todas las fotos, y renderizar sin mirar la plancha de contacto no es
+  verificar. Son independientes del generador: valen con cualquiera, o dibujando a mano.
+- **Safe zones 9:16**, en `roles/ad-creative-strategist`. Los porcentajes concretos que la interfaz
+  tapa arriba y abajo, el rango de píxeles donde puede vivir lo crítico, y qué hacer cuando la
+  cuenta no te deja personalizar por ubicación: subir el vertical ya diseñado como imagen única.
+- **El xlsx del modelo de funnel tiene que abrir sin pedir reparación**, en `s2a-modelar-funnel`.
+  Un archivo escrito con openpyxl y nada más llega roto y no te enterás: la librería no guarda el
+  valor cacheado de las fórmulas, así que Excel pide repararlo y las vistas previas de mail y drive
+  muestran todo en blanco. LibreOffice lo tolera, con lo cual el bug no aparece si solo probás ahí.
+  Va como criterio de éxito de la etapa: si la validación falla, el archivo no sale.
+- Tocados: `roles/INDEX.md` (nuevo), `s3d-creativos-ads/SKILL.md`, `roles/ad-creative-strategist.md`,
+  `s2a-modelar-funnel/SKILL.md`, `VERSION`, `CHANGELOG.md`.
+
 ## 1.0.0 (2026-08-27)
 
 Primera versión numerada del kit. Lo que hay adentro, en una línea: un método de 16 pasos para

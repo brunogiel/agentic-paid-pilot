@@ -81,3 +81,53 @@ Traduce los wedges y segmentos del backbone a copy ejecutable por ad group y por
 - **Mismo ad group en 2 idiomas:** Google no acepta 2 Final URLs por idioma en el mismo RSA; dividir en ad groups separados por idioma.
 - **Ángulos todos parecidos:** releer el swipe antes de forzar variantes. Si el backbone tiene solo 2-3 wedges fuertes, mejor 3 ads bien distintos que 6 variantes mediocres del mismo ángulo.
 - **Copy con claims sin sustento:** marcar `[ABIERTO: estadística / testimonial / dato]` en lugar de inventar. No poner números que el cliente no confirmó.
+
+## Creativos generados con IA (foto generada + copy sobreimpreso)
+
+Diez reglas de una tanda real de estáticos generados con un modelo de imagen. Son independientes
+del generador: valen con cualquier herramienta, o dibujando a mano.
+
+- **La etapa la define la AUDIENCIA del ad set, no el tono del texto.** Es el error más caro y el
+  más fácil de cometer: escribís copy de cierre ("terminá tu solicitud en dos minutos") y lo
+  etiquetás BOFU, pero el ad set que lo va a correr es "visitó y no contactó, últimos 30 días",
+  gente que ni dejó el teléfono. Antes de escribir una palabra, mirá contra qué lista corre la
+  pieza. Corolario: **un lookalike de tus clientes es TOFU**, le habla a alguien parecido a un
+  cliente, no a un cliente.
+- **La foto se genera SIN texto; el copy se sobreimprime por código.** Tres razones: los modelos
+  escriben mal en español (se comen tildes y deforman palabras, y en categorías reguladas un texto
+  raro es riesgo de rechazo), cambiar un copy no puede costar una generación nueva, y la misma foto
+  sirve para varias etapas con textos distintos.
+- **Editar y extender sale mucho más barato que regenerar.** Sacarle un objeto a una foto ya buena,
+  o extenderla a otro aspect ratio, se hace pasando la imagen como referencia a un modelo de
+  edición: cuesta una fracción de una generación nueva y conserva la escena. La clave del prompt de
+  edición es **enumerar todo lo que NO tiene que cambiar**; si solo pedís el cambio, te reinterpreta
+  la escena entera.
+- **El apaisado se resuelve con maqueta, no con IA.** De un 9:16 solo podés quedarte con una franja
+  del medio y perdés la cara; y extender con IA falla distinto: en apaisado hay más superficie
+  inventada que real, y el modelo produce **formas plausibles de cerca e incoherentes en conjunto**
+  (le pedís que continúe un balcón y agrega otro balcón, que siga el mostrador y abre la pared a la
+  calle). No es problema de prompt, es el límite de la herramienta para ese trabajo. La salida es
+  maqueta partida: panel de marca con el copy de un lado, la foto vertical entera del otro. Cero
+  píxeles inventados, costo cero, y más legible que el copy encima de la foto.
+- **No existe una regla de recorte que sirva para todas las fotos.** Se probaron dos y las dos
+  fallan: anclar del lado del sujeto come caras cuando la persona está al medio del cuadro; centrar
+  siempre decapita a la que está parada y deja las cenitales en pura mesa. **El punto focal es un
+  dato por foto**, calibrado mirando el resultado.
+- **Renderizar no es verificar.** Que el script no tire error no dice nada sobre si la cara quedó
+  cortada. La plancha de contacto por formato es un paso obligatorio, y se mira buscando tres cosas
+  concretas: caras cortadas por el borde, sujeto perdido (el recorte se quedó con la parte vacía) y
+  copy tapando lo que se tenía que ver. En esa tanda, los errores que se colaron los encontró quien
+  recibió las piezas, no el proceso.
+- **El copy va donde la foto tiene aire, y eso también es un dato por foto.** Forzar la posición del
+  bloque por formato rompe las fotos cenitales, que tienen el contenido abajo y el aire arriba.
+- **Legibilidad: degradado suave más sombra difusa detrás del texto.** Un degradado fuerte tapa la
+  foto y mata la pieza. Y el degradado tiene que escalar con el alto del lienzo: los píxeles fijos
+  que funcionan en 9:16 se comen medio cuadro en 1:1.
+- **Detalles que rompen la pieza y no se ven en el código:** el wordmark del logo en color claro
+  desaparece sobre la foto (pasalo a blanco y dejá el ícono en color de marca), y los pares que no
+  se pueden partir (un monto con su moneda) necesitan espacio duro, o el número queda huérfano en la
+  línea de abajo.
+- **Contra el look de stock: señales locales duras.** Pedí explícitamente los objetos que solo
+  existen en el mercado donde vas a publicar: el tipo de piso, el electrodoméstico típico, la bebida
+  de la mesa, cómo se ven los balcones. Sin eso, el modelo tira casa suburbana estadounidense con
+  caras de banco de imágenes. Es lo que más movió la calidad percibida de la tanda.

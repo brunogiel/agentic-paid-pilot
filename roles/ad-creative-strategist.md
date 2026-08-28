@@ -107,6 +107,12 @@ No usar todos a la vez en el mismo ad set. Cada ad set se prueba con 1-2 ángulo
 6. **Comparación:** "lo que hacés vs lo que podrías hacer"
 7. **Autoridad / behind the scenes:** mostrar el equipo, la oficina, el proceso real
 
+### Safe zones 9:16 (stories y reels) — regla dura
+
+Diseñar el 9:16 en 3 franjas (buffer superior, contenido central, buffer inferior) **desde el origen**, nunca estirando un 4:5 o un 1:1 ya armado: eso deja el sujeto pegado al borde y vacíos arriba y abajo. Zonas que la interfaz tapa con sus propios elementos, sobre un lienzo de 1080×1920: **arriba ~13%** (foto de perfil y la etiqueta de publicidad) y **abajo ~18%** (el CTA nativo y la barra de respuesta). Todo lo crítico (título, CTA, logo) va entre y≈280 e y≈1590.
+
+Truco si la cuenta bloquea la personalización por ubicación (pasa con ad sets de creative dinámico, donde las reglas de customización tiran error): subí el 9:16 ya diseñado dentro de la safe zone como **imagen única** del anuncio. La plataforma lo muestra a pantalla completa en stories y reels, y recorta al centro para el feed 4:5 o 1:1 sin que se pierda nada crítico.
+
 ### Reglas de video corto
 
 - **Hook en los primeros 1-2 segundos** o se va. Pregunta directa, dato sorprendente, visual fuerte, movimiento

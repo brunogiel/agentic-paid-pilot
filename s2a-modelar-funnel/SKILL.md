@@ -29,6 +29,8 @@ Convierte el research en números: dado el spend, cuántos clientes entran y a q
 
 **Paso 3 [DET] — Excel con fórmulas vivas.** Generar el xlsx (openpyxl): inputs arriba (spend, CPC, tasas por escenario), cadena multiplicativa con **fórmulas** (cambiar un supuesto recalcula todo), y abajo CAC, LTV, LTV/CAC y margen por escenario.
 
+⚠ **Un xlsx escrito con openpyxl y nada más está roto y no te vas a enterar.** La librería no guarda el valor cacheado de las fórmulas ni tipa las celdas: cualquier fórmula que devuelva texto sale sin `t="str"` y **Excel pide reparar el archivo**. LibreOffice lo tolera, porque recalcula al abrir, así que el bug no aparece si solo probás ahí. Y sin valores cacheados, las vistas previas de Gmail, Drive o el visor del sistema muestran todas las celdas vacías: el que lo recibe ve un archivo en blanco. Que el generador recalcule el archivo antes de entregarlo (LibreOffice en modo headless sirve) y **falle** si alguna fórmula queda sin valor o mal tipada.
+
 **Paso 4 [LATENT] — Lectura.** Derivar del modelo: **CPL objetivo** (qué CPL hace cerrar el realista), **CAC máximo** tolerable (donde LTV/CAC = 1), **breakeven** (cuántas firmas pagan el piloto), y cuál tasa es la más sensible (dónde mirar primero si el piloto viene flojo).
 
 **Paso 5:** devolver al orquestador LTV/CAC por escenario + CPL objetivo + CAC máximo, para el checkpoint y para que `disenar-experimento` fije umbrales.
@@ -43,6 +45,7 @@ Convierte el research en números: dado el spend, cuántos clientes entran y a q
 - LTV/CAC calculado por escenario + veredicto claro (¿cierra en realista?).
 - CPL objetivo + CAC máximo + breakeven nombrados con número.
 - El xlsx recalcula al cambiar un supuesto (fórmulas, no valores).
+- El xlsx abre sin pedir reparación, y su vista previa muestra números, no celdas vacías. Si la validación del generador falla, el archivo no sale.
 
 ## Troubleshooting
 
