@@ -49,6 +49,7 @@ Antes de armar el gate de budget (etapa 2), el método arma un **spec de stack**
 | Captura + CRM | El formulario que junta el lead y lo da de alta en un CRM. |
 | Agendamiento | Que el prospecto reserve una llamada solo, sin ida y vuelta de mails. |
 | WhatsApp | Atender o calificar leads por WhatsApp con un bot simple. |
+| GEO y citación en LLM | Aparecer citado en las respuestas de ChatGPT, Copilot y Perplexity, y medirlo. |
 
 Cada componente sigue la misma lógica que el resto del kit: primero te explica **para qué sirve y cuándo conviene** (sin nombrar una herramienta todavía), después te muestra un menú de 2 a 4 opciones con sus trade-offs, y recién con tu OK baja a la receta paso a paso de la opción elegida.
 
@@ -57,7 +58,7 @@ Cada componente sigue la misma lógica que el resto del kit: primero te explica 
 El piloto es la puerta de entrada, no el techo. Solo **4 de los 16 pasos** existen únicamente para un piloto: el plan inicial, el diseño del experimento, la operación de gates y el postmortem. Todo lo demás te sigue sirviendo con las campañas ya andando:
 
 - **Los 6 roles de `roles/`** son de uso continuo. El auditor de cuentas y el analista de términos de búsqueda no arrancan nada: optimizan lo que ya corre. Lo mismo el rol de medición y el de textos de aviso.
-- **Los 6 componentes de `componentes/`** son piezas de funnel que se implementan una vez y quedan. No caducan cuando cierra el gate.
+- **Los 7 componentes de `componentes/`** son piezas de funnel que se implementan una vez y quedan. No caducan cuando cierra el gate.
 - **El research de keywords, los creativos y el tracking** se rehacen cada vez que abrís una campaña nueva, sea o no un piloto.
 
 El kit está escrito alrededor de un piloto porque es donde la improvisación sale más cara. Ni el método ni las piezas se apagan cuando el piloto termina.
@@ -68,7 +69,7 @@ El kit está escrito alrededor de un piloto porque es donde la improvisación sa
 |---|---|
 | `SKILL.md` | el método principal, el que coordina todo |
 | `s0` a `s4b` | cada paso del método, uno por archivo (incluye `s2c`, el spec de stack) |
-| `componentes/` | las 6 piezas de implementación de funnel de la tabla de arriba, una carpeta por componente |
+| `componentes/` | las 7 piezas de implementación de funnel de la tabla de arriba, una carpeta por componente |
 | `roles/` | 6 "expertos" de publicidad (Google, Meta, textos de aviso, medición) que el método consulta cuando los necesita |
 | `reference/` | referencia compartida (infra y credenciales, arquitecturas de funnel) |
 | `templates/` | plantillas en blanco de los documentos que se van llenando (incluye `kickoff-prd-template.md`, para cuando el arranque es una corrida de muchos frentes en paralelo en vez de etapa por etapa) |
@@ -85,4 +86,4 @@ El kit está escrito alrededor de un piloto porque es donde la improvisación sa
 
 ## Para técnicos
 
-Kit de *skills* (formato `SKILL.md`) para asistentes de IA. Un orquestador *thin* + 16 *child skills*, una por sub-etapa (incluye `s2c-spec-stack`, el PRD del stack adaptado de BMAD), con doctrina thin-harness / fat-skills: el orquestador solo coordina y gatea, el trabajo vive en las child skills. Además, `componentes/` suma 6 piezas reusables de implementación de funnel (workers, no etapas), cada una con 3 niveles: first principles agnósticos de herramienta, menú de stack con trade-offs, y receta (`reference.md`) de la opción probada. Pasos marcados `[LATENT]` (razonamiento), `[DET]` (determinístico) y `[FANOUT]` (subagentes en paralelo). Scripts en `scripts/` (no embebidos), parámetros sin hardcodear, success metrics por skill. Pensado para Claude Code / Cursor, pero cualquier asistente que lea markdown sirve.
+Kit de *skills* (formato `SKILL.md`) para asistentes de IA. Un orquestador *thin* + 16 *child skills*, una por sub-etapa (incluye `s2c-spec-stack`, el PRD del stack adaptado de BMAD), con doctrina thin-harness / fat-skills: el orquestador solo coordina y gatea, el trabajo vive en las child skills. Además, `componentes/` suma 7 piezas reusables de implementación de funnel (workers, no etapas), cada una con 3 niveles: first principles agnósticos de herramienta, menú de stack con trade-offs, y receta (`reference.md`) de la opción probada. Pasos marcados `[LATENT]` (razonamiento), `[DET]` (determinístico) y `[FANOUT]` (subagentes en paralelo). Scripts en `scripts/` (no embebidos), parámetros sin hardcodear, success metrics por skill. Pensado para Claude Code / Cursor, pero cualquier asistente que lea markdown sirve.

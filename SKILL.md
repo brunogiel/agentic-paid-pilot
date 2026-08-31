@@ -140,11 +140,11 @@ s4a-operar-gates/          kill criteria + reporte periódico + comunicación pa
 s4b-postmortem/            postmortem canónico + revisión con lentes distintas + checklist de cierre + destilado
 ```
 
-16 child skills en total (el mapa de arriba). Aparte, `componentes/` guarda 6 piezas reusables de implementación de funnel que **no son etapas**: se consumen desde `s2c-spec-stack` (que decide cuáles usa este piloto) o sueltas, a pedido del usuario. Ver "Catálogo de componentes" abajo.
+16 child skills en total (el mapa de arriba). Aparte, `componentes/` guarda 7 piezas reusables de implementación de funnel que **no son etapas**: se consumen desde `s2c-spec-stack` (que decide cuáles usa este piloto) o sueltas, a pedido del usuario. Ver "Catálogo de componentes" abajo.
 
 ## Catálogo de componentes
 
-Además del pipeline de 5 etapas, el kit expone 6 piezas reusables en `componentes/` (no son etapas del pipeline: son bloques de implementación de funnel que un piloto puede necesitar o no, según su diseño):
+Además del pipeline de 5 etapas, el kit expone 7 piezas reusables en `componentes/` (no son etapas del pipeline: son bloques de implementación de funnel que un piloto puede necesitar o no, según su diseño):
 
 | Componente | Qué resuelve en 1 línea |
 |---|---|
@@ -154,6 +154,7 @@ Además del pipeline de 5 etapas, el kit expone 6 piezas reusables en `component
 | `componentes/captura-y-crm/` | Captura del lead (form/webhook) con validación server-side + alta en un CRM. |
 | `componentes/agendamiento/` | Booking de la llamada/reunión de venta, con webhook de vuelta al CRM. |
 | `componentes/canal-whatsapp/` | Canal de WhatsApp (bridge + router) para atender o calificar leads por chat. |
+| `componentes/geo-y-citacion-llm/` | Aparecer citado en ChatGPT, Copilot y Perplexity, y medirlo. Fixes técnicos + contenido por intención. |
 
 **Regla de ruteo, nunca arrancar por la herramienta.** Cuando el usuario pida un componente suelto ("quiero un lead magnet", "configurame el WhatsApp del piloto", "armame la cadena de mails", "necesito agendamiento para X"), el orquestador:
 1. Rutea al `componentes/{nombre}/SKILL.md` correspondiente.
@@ -166,7 +167,7 @@ Nunca al revés: no se arranca eligiendo la herramienta (ej. "usemos tal ESP") s
 ### Modo explícito: definir todo primero, implementar por etapas
 
 Activar cuando el usuario quiere cerrar TODO el stack de una sola sentada, pero construir de a poco (por tiempo, por budget, o porque algunos componentes dependen de decisiones que todavía no están firmes):
-- `s2c-spec-stack` puede escribir el spec completo (los 6 componentes de `componentes/`, no solo los que se implementan ya) en una sola corrida.
+- `s2c-spec-stack` puede escribir el spec completo (los 7 componentes de `componentes/`, no solo los que se implementan ya) en una sola corrida.
 - Cada componente que el spec deja sin implementar todavía queda marcado explícito en el doc, ej. `[PENDIENTE: cold-outreach, se arma semana 3]`.
 - La implementación (Etapa 3 + componentes sueltos) sigue yendo etapa por etapa como siempre, tachando `[PENDIENTE]` a medida que se resuelve cada uno.
 

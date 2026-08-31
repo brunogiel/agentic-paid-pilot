@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.2.0 (2026-08-22)
+
+- **Séptimo componente: `geo-y-citacion-llm`.** El kit optimizaba tráfico pago y SEO tradicional
+  pero no cubría el canal que crece más rápido: la gente que le pregunta a un modelo generativo en
+  vez de buscarlo en Google. El componente nuevo separa dos cosas que se confunden: habilitar la
+  citación (fixes técnicos — los user-agents de búsqueda en vivo nunca bloqueados, alta en Bing
+  Webmaster Tools, un solo dominio canónico coherente) y ganarte la cita (contenido por
+  sub-pregunta, no por repetición de la misma keyword, que es el instinto que trae el SEO viejo y
+  que de hecho baja la tasa de citación un 10%). Trae la tabla de qué motor se sirve de qué índice
+  (Copilot y ChatGPT corren sobre Bing, Perplexity ya tiene índice propio, Google AI Overviews y
+  Claude no pasan por ahí), el menú de implementación ordenado por rendimiento sobre hora de
+  trabajo, y la tensión con `lead-magnet-y-nurture`: ese componente deja el blog en `noindex` por
+  default, y un blog en `noindex` tampoco puede ser citado por un motor generativo.
+- Tocados: `componentes/geo-y-citacion-llm/SKILL.md` (nuevo), `SKILL.md`, `README.md`, `VERSION`,
+  `CHANGELOG.md`.
+
 ## 1.1.1 (2026-08-28)
 
 - **El ejemplo de audiencias de Meta dice qué representa cada ID.** `audiences.example.json` traía
