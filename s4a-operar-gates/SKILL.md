@@ -54,7 +54,7 @@ tengas una).
 ## Flujo
 
 **Paso 1 [LATENT]: Setup del ciclo al prender un gate.** Antes de encender, cerrar con el partner (no después, no a mitad de camino):
-- **Kill criteria explícitos**: qué número mata el gate (ej. "$X gastados con 0 agendas ICP"), qué lo pausa parcialmente, qué lo escala. Viene ya definido de `2.plan-piloto.md § Kill criteria`; acá se confirma que el partner lo vio y lo acepta ANTES de que la plata empiece a salir. Si `2.plan-piloto.md` no tiene esta sección poblada, no seguir: volver a `s2b`.
+- **Kill criteria explícitos**: qué número mata el gate (ej. "$X gastados con 0 agendas ICP"), qué lo pausa parcialmente, qué lo escala. Viene ya definido de `2.plan-piloto.md § Kill criteria`; acá se confirma que el partner lo vio y lo acepta ANTES de que el presupuesto empiece a ejecutarse. Si `2.plan-piloto.md` no tiene esta sección poblada, no seguir: volver a `s2b`.
 - **Baseline del gate**: fecha de encendido = fecha 0 de medición. Todo gasto/lead anterior a esa fecha queda comprimido en un bloque histórico, nunca mezclado con la lectura del gate vigente (ver regla 5 del Paso 2).
 - **Cadencia de reporte** acordada con el partner (diario si el gate es corto y caliente, semanal si es largo o de bajo volumen).
 - Volcar los tres a `workspace/operacion-gates.md` (usar `templates/4.operacion-gates.md`).
@@ -63,14 +63,14 @@ tengas una).
 
 1. **`.md` antes que draft.** Guardar el reporte completo como archivo en `entregables/reportes-{cadencia}/` ANTES de tocar cualquier draft de mail. Es la fuente de revisión; el mail es el segundo paso.
 2. **Chequeo de continuidad.** Abrir el reporte de la corrida anterior antes de escribir el propio: copiar formato/tono, cruzar que los números no cambiaron si no debían, usar el "último dato conocido" de un canal que degradó ese día.
-3. **Degradación elegante, nunca abortar.** Si una fuente (navegador, API) falla, entregar igual con lo que sí está firme + una línea de aviso. El reporte sale en cada corrida, pase lo que pase con una sola fuente.
+3. **Degradación elegante, nunca abortar.** Si una fuente (navegador, API) falla, entregar igual con lo que sí está firme + una línea de aviso. El reporte se emite en cada corrida, sin importar qué pase con una sola fuente.
 4. **El CRM propio desempata SIEMPRE.** Pixel/GA4/analytics de plataforma son orientativos (subregistran por bloqueo de IAB, ad blockers, atribución IAB→Direct); el conteo oficial de leads/agendas es el CRM del negocio. Nombrar las tres fuentes en la redacción cuando discrepan, no solo la que gana.
 5. **Denominador = solo desde la baseline del gate vigente.** Todo lo anterior (gates cerrados, relanzamientos previos) va comprimido en un bloque Histórico/Referencia al final, con un TOTAL entero del piloto como contexto. Nunca mezclar gates en la tabla principal.
 6. **Ritmo forward, no promedio acumulado÷días.** Usar el gasto diario vigente para proyectar cuándo se toca el techo del gate. El promedio arrastra el ramp-up lento del arranque y subestima cuánto falta (en un piloto real esto cambió la proyección de cierre de "fin de mes" a "la semana que viene").
 7. **Nurture por personas, no por envíos.** Si hay un canal de email nurture, contar personas únicas en la cadena + cuántas abrieron/hicieron clic al menos una vez. Los agregados de la mayoría de los ESPs cuentan eventos, no gente; excluir siempre los mails de prueba internos del conteo.
 8. **CTR/CPC sobre link clicks, comparable entre canales.** El CTR "de anuncio" de Meta (que suma reacciones, expandir texto, clicks a perfil) infla 3-4x contra el CTR real de tráfico al sitio. Usar link clicks como base de comparación entre Google y Meta; el CTR inflado va de footnote nomás.
 9. **Filtro anti-tests en el CRM.** Excluir del conteo cualquier lead sin UTM/Source real (tests internos, flujos de QA, direcciones tipo `+test`) antes de reportar.
-10. **Chequear el dominio antes de llamar "caliente" a un lead** con engagement raro en el nurture. Puede ser un competidor haciendo research (dominio de una firma del mismo rubro), no un prospecto real.
+10. **Verificar el dominio antes de llamar "caliente" a un lead** con engagement raro en el nurture. Puede ser un competidor haciendo research (dominio de una firma del mismo rubro), no un prospecto real.
 11. **El primer email de un gate nuevo lleva un bloque "Estado" especial**, distinto del gestalt de números de los días siguientes: qué se prendió, por qué, y si hay creativos nuevos, una foto de cada uno. A partir del segundo reporte, el Estado vuelve al gestalt normal.
 12. **Leads (captura) vs Agendas (cierre) van separados.** CPL = gasto ÷ leads capturados (señal de tope de embudo). CPA = gasto ÷ agendas (la métrica que decide el gate). Reportar los dos, pero el veredicto del gate lo da el CPA, no el CPL.
 
@@ -85,9 +85,9 @@ tengas una).
 - **Validar interés primero** (SMS/llamada/mensaje corto) en vez de tirarle contactos fríos al que cierra. Un lead que nunca responde al que cierra (ni llamada ni SMS) es una señal de que el hand-off fue prematuro.
 - **Lead tibio declarado ("quiero aprender, no contratar todavía") va a nurture, no a call.** No forzar el hand-off con alguien que ya dijo que no está listo.
 - Si un lead sale del funnel normal (agendó, se dio de baja), sacarlo del retargeting de inmediato para no seguir gastando en alguien que ya no es el target del gasto.
-- **Trackear el fit-rate aparte del CPL**: % de leads capturados que están dentro del ICP (vertical IN + floor de facturación), en un tracker propio (una planilla alcanza). Un CPL barato con fit-rate bajo es plata quemada disfrazada de eficiencia; el veredicto del gate se lee sobre leads ICP, no sobre capturas brutas.
+- **Medir el fit-rate aparte del CPL**: % de leads capturados que están dentro del ICP (vertical IN + floor de facturación), en un tracker propio (una planilla alcanza). Un CPL barato con fit-rate bajo es gasto quemado disfrazado de eficiencia; el veredicto del gate se lee sobre leads ICP, no sobre capturas brutas.
 
-**Paso 5 [LATENT]: Decisión de gate al agotarse el presupuesto.** Con el gate en o cerca del techo, decidir con evidencia (no a ojo):
+**Paso 5 [LATENT]: Decisión de gate al agotarse el presupuesto.** Con el gate en o cerca del techo, decidir con evidencia, no por intuición:
 - **Seguir**: hay señal real (agendas, close rate) que justifica ampliar el gate.
 - **Pivotar**: hay captura (leads/clics) pero no cierre; el ángulo, la oferta o el canal necesitan cambiar antes de seguir quemando presupuesto en lo mismo. Esto dispara el modo relanzamiento (Paso 6).
 - **Matar**: se cumplió el kill criteria del Paso 1 (ej. presupuesto agotado con 0 agendas ICP). Cerrar el gate, documentar el % real ejecutado (no redondear "gastamos todo" si quedó un remanente) y pasar a `s4b-postmortem`.
@@ -121,7 +121,7 @@ Al cerrar un gate (Paso 5 con veredicto seguir/pivotar/matar), appendear una ent
 ## Success metrics
 
 - 0 gates encendidos sin kill criteria explícitos acordados con el partner de antemano.
-- El reporte periódico sale en cada corrida programada, aun degradado (0 corridas abortadas por una fuente caída).
+- El reporte periódico se emite en cada corrida programada, aun degradado (0 corridas abortadas por una fuente caída).
 - El veredicto de cierre de gate cita el CPA real y el n de agendas, sin generalizar el canal a partir de una sola ejecución.
 - Si hay una tarea programada, su prompt no contiene ni un solo valor operativo que pueda desincronizarse (monto, nombre de campaña, destinatario).
 

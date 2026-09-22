@@ -61,7 +61,7 @@ Traduce los wedges y segmentos del backbone a copy ejecutable por ad group y por
 - **La frecuencia alta en retargeting no se setea, se diseña.** El control de frecuencia por API (`frequency_control_specs` en Meta) suele solo existir para el objetivo de Alcance/Awareness, no para Tráfico/conversión. Para lograr frecuencia sana en un objetivo de conversión: pool de audiencia chico + variedad de creativos rotando (3-5 impresiones/semana por variedad), nunca un cap duro que la plataforma no deja setear en ese objetivo.
 - **Gotchas de edición bulk de RSAs (Google Ads Editor, Buscar y reemplazar):** aplicado sobre selección múltiple, no campo por campo. Segunda pasada de `"  "` (doble espacio) → `" "` después de cualquier reemplazo por vacío, porque deja espacios dobles o texto que arranca con espacio. Nunca vaciar un headline entero por find&replace: si el término buscado ES el headline completo, reemplazarlo por vacío deja el slot en blanco y rompe el mínimo de 3 headlines del RSA, hay que borrar el slot a mano o reescribirlo. Para decenas de ads conviene exportar a planilla, editar ahí y reimportar en vez de find&replace directo. Los conteos de caracteres `[n]` declarados en un doc no son confiables por sí solos: contar con script antes de cargar. Dejar la convención de pins explícita en la intro del doc de creativos (qué headline va pineado a qué posición) para que quien carga a mano no tenga que inferir la intención. El display path cosmético (ej. `/ciudad`) no necesita ser una ruta real del sitio si el Final URL real está documentado aparte.
 - **Gate de consistencia cruzada pre-carga.** Antes de cargar los ads en las plataformas, correr una verificación cruzando spec ↔ assets ↔ landing: detecta menciones textuales desactualizadas (ej. "te respondo por WhatsApp" en un RSA cuando el funnel ya migró a agenda directa) y creativos apuntando al brazo equivocado de un A/B (ej. un UGC de persona en un ad que cae en la landing "agencia"). Este chequeo es un paso formal de pre-launch, no un nice-to-have.
-- **Producción programática de los estáticos (script Python + Pillow), no edición a mano.** Cuando los creativos son imagen base + texto quemado (banda de color + headline + CTA), un script que compone cada pieza desde la imagen base genera los 4 formatos (1.91:1 / 1:1 / 4:5 / 9:16) con un layout propio por formato (nunca resize del otro) y respeta las safe zones por construcción. Dos ventajas reales: (a) un cambio de copy o color regenera la tanda entera gratis (retocar 30 PNGs a mano no escala), y (b) el mismo script arma **planchas** (contact sheets: todos los creativos de una tanda en una sola imagen grande) para revisarla de un vistazo con quien decide antes de subir nada. El script se versiona junto al workspace del piloto.
+- **Producción programática de los estáticos (script Python + Pillow), no edición a mano.** Cuando los creativos son imagen base + texto quemado (banda de color + headline + CTA), un script que compone cada pieza desde la imagen base genera los 4 formatos (1.91:1 / 1:1 / 4:5 / 9:16) con un layout propio por formato (nunca resize del otro) y respeta las safe zones por construcción. Dos ventajas reales: (a) un cambio de copy o color regenera la tanda entera sin costo adicional (retocar 30 PNGs a mano no escala), y (b) el mismo script arma **planchas** (contact sheets: todos los creativos de una tanda en una sola imagen grande) para revisarla de una sola pasada con quien decide antes de subir nada. El script se versiona junto al workspace del piloto.
 
 ## Output esperado
 
@@ -90,14 +90,14 @@ del generador: valen con cualquier herramienta, o dibujando a mano.
 - **La etapa la define la AUDIENCIA del ad set, no el tono del texto.** Es el error más caro y el
   más fácil de cometer: escribís copy de cierre ("terminá tu solicitud en dos minutos") y lo
   etiquetás BOFU, pero el ad set que lo va a correr es "visitó y no contactó, últimos 30 días",
-  gente que ni dejó el teléfono. Antes de escribir una palabra, mirá contra qué lista corre la
+  personas que no dejaron el teléfono. Antes de escribir una palabra, verificá contra qué lista corre la
   pieza. Corolario: **un lookalike de tus clientes es TOFU**, le habla a alguien parecido a un
   cliente, no a un cliente.
 - **La foto se genera SIN texto; el copy se sobreimprime por código.** Tres razones: los modelos
   escriben mal en español (se comen tildes y deforman palabras, y en categorías reguladas un texto
   raro es riesgo de rechazo), cambiar un copy no puede costar una generación nueva, y la misma foto
   sirve para varias etapas con textos distintos.
-- **Editar y extender sale mucho más barato que regenerar.** Sacarle un objeto a una foto ya buena,
+- **Editar y extender tiene un costo mucho menor que regenerar.** Quitarle un objeto a una foto ya lograda,
   o extenderla a otro aspect ratio, se hace pasando la imagen como referencia a un modelo de
   edición: cuesta una fracción de una generación nueva y conserva la escena. La clave del prompt de
   edición es **enumerar todo lo que NO tiene que cambiar**; si solo pedís el cambio, te reinterpreta

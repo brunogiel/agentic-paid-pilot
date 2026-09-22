@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.3.0 (2026-09-22)
+
+- **Registro editorial: se saca el coloquialismo, se mantiene el voseo.** El kit estaba escrito en
+  un registro demasiado informal para un repo público: "plata" en vez de presupuesto, un heading
+  que decía "Cómo funciona, en criollo", "te lleva de la mano", "chequealo", "a ojo", "mueve la
+  aguja". Nada de eso agregaba precisión y sí restaba seriedad al primer contacto de alguien que
+  llega desde GitHub. El registro nuevo es profesional pero sigue siendo rioplatense: el voseo
+  queda intacto (tenés, podés, armá, revisá), y los términos del dominio se escriben siempre igual
+  (gate, piloto, landing, kill criteria, CAC/LTV, matrícula vs impuesto evitable). Se unificó
+  además el estado "Parkeado" a "Pausado" en los cuatro estados por frente del kickoff multifrente,
+  que era el último anglicismo informal con peso estructural.
+- **Corrección de dato:** el README y el `SKILL.md` decían "las 4 etapas" cuando el playbook tiene
+  5 (Etapa 0 a Etapa 4). Corregido en ambos.
+- Tocados: `README.md`, `SKILL.md`, `templates/kickoff-prd-template.md`, `s4a-operar-gates/SKILL.md`,
+  `s3d-creativos-ads/SKILL.md`, `s4b-postmortem/SKILL.md`, `VERSION`, `CHANGELOG.md`.
+
 ## 1.2.0 (2026-08-22)
 
 - **Séptimo componente: `geo-y-citacion-llm`.** El kit optimizaba tráfico pago y SEO tradicional

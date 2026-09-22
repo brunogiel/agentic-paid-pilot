@@ -17,8 +17,7 @@ description: >-
 
 # Etapa 4 · postmortem: cerrar el piloto sin perder lo aprendido
 
-Un piloto que termina sin postmortem formal pierde la mitad de su valor: la
-plata ya se gastó, y si el aprendizaje no queda destilado en un formato
+Un piloto que termina sin postmortem formal pierde la mitad de su valor: el presupuesto ya se ejecutó, y si el aprendizaje no queda destilado en un formato
 reusable, el próximo piloto repite los mismos errores de medición y de
 cierre. Este skill formaliza el cierre: qué se escribe, quién lo revisa antes
 de mandarlo, qué se apaga, y a dónde va cada aprendizaje. (Reemplazá la
@@ -62,16 +61,16 @@ tengas una.)
 **Paso 2 [LATENT]: Revisión con lentes distintas antes de mandarlo.** Antes de compartir el postmortem con el partner, pasarlo por una revisión de 2-4 lentes: Rigor/Riesgo, Destinatario/partner, Pragmático/qué falta, y una lente de continuidad operativa. En un cierre real, esta revisión detectó un hueco genuino (faltaba llamar al cliente final antes de cerrar la narrativa del piloto) que no había salido en el primer borrador. Tratar ese tipo de hallazgo como bloqueante antes de mandar, no como nice-to-have.
 
 **Paso 3 [DET]: Checklist de cierre operativo.** Ningún piloto queda "cerrado" sin este checklist en verde:
-- **Pausar TODO el gasto residual**, incluso lo que parece marginal (un retargeting de bajo monto diario, automations de un ESP que siguen corriendo). Un piloto "cerrado" que sigue gastando algunos dólares por día indefinidamente no está cerrado.
+- **Pausar TODO el gasto residual**, incluso lo que parece marginal (un retargeting de bajo monto diario, automations de un ESP que siguen activas). Un piloto "cerrado" que sigue gastando algunos dólares por día indefinidamente no está cerrado.
 - **Apagar bots/daemons del funnel** (chatbots, routers, automatizaciones que responden en nombre del negocio). Si el bot tenía un fallback a "funnel por default", confirmar que apagarlo no rompe otros funnels que comparten el mismo router.
-- **Desactivar las tareas programadas** del piloto (reporte periódico, triage de respuestas). No dejarlas corriendo "por si acaso": una tarea programada de un piloto cerrado reporta sobre nada y confunde.
+- **Desactivar las tareas programadas** del piloto (reporte periódico, triage de respuestas). No dejarlas activas "por si acaso": una tarea programada de un piloto cerrado reporta sobre nada y confunde.
 - **Rotar credenciales compartidas** que circularon durante el piloto (API keys, tokens, accesos que vio el partner o terceros). Si alguna quedó pendiente de rotar durante la operación, este es el punto de no-retorno para hacerlo.
 - **Archivar el workspace viejo** (versiones descartadas, workspace v1 si hubo un v2, backups de reportes) a una subcarpeta `archive/` interna del proyecto, no a un archivo global si el proyecto entero sigue vivo por otras razones.
 - **Completar `runs/` del skill con los veredictos finales.** Si alguna etapa quedó con `gate_superado` sin resolver o notas incompletas, cerrarla acá.
 
 **Paso 4 [LATENT]: Destilado a destinos.** Cada aprendizaje del postmortem va a UN destino, no a todos por las dudas:
 - **Al propio playbook**: si el aprendizaje es de proceso (cómo operar un gate, cómo comunicarse con un partner, un gotcha de una plataforma que se va a repetir), va como patch a la child skill correspondiente o, si es nuevo, a un child skill nuevo. No lo dejes solo en el postmortem: un aprendizaje que vive solo en un postmortem de un proyecto cerrado no le sirve al próximo piloto.
-- **A tus docs de referencia estables**: si el aprendizaje es genérico y estable (un framework, un gotcha de una API que cualquier piloto futuro va a pisar), va a los `roles/` de paid media o a un doc de referencia propio.
+- **A tus docs de referencia estables**: si el aprendizaje es genérico y estable (un framework, un gotcha de una API que cualquier piloto futuro va a encontrar), va a los `roles/` de paid media o a un doc de referencia propio.
 - **A tu memoria de proceso**: si es un dato operativo puntual con vida útil media (un gotcha de una herramienta externa, un patrón de comportamiento de una plataforma) que no amerita reescribir un skill entero.
 - **Al próximo piloto directamente**: el inventario de assets reutilizables (Paso 1) no es un aprendizaje abstracto, es un asset concreto (landing, copy, tracking armado). Documentarlo donde el próximo piloto lo vaya a buscar (ej. este mismo playbook cita el piloto anterior como prior art).
 

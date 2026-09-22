@@ -1,8 +1,8 @@
 # PRD — Kickoff de ejecución: {{NEGOCIO}}
 
-> **Cuándo usar este template en vez del scaffold simple de `s0-plan-piloto`:** cuando el kickoff no va a ser "una etapa a la vez con tu OK" (el modo default del kit) sino una corrida de **muchos frentes en paralelo** (waves de subagentes, gate de verificación automático, degradación explícita si algo se traba) para dejar todo listo para encender de una sola sentada, típicamente desatendida. Si tu piloto avanza etapa por etapa como manda la regla madre del `SKILL.md`, no hace falta este documento: alcanza con `0.plan.md` + `2.plan-piloto.md` + `3.ejecucion-piloto.md`.
+> **Cuándo usar este template en vez del scaffold simple de `s0-plan-piloto`:** cuando el kickoff no va a ser "una etapa a la vez con tu OK" (el modo default del kit) sino una corrida de **muchos frentes en paralelo** (waves de subagentes, gate de verificación automático, degradación explícita si algo se traba) para dejar todo listo para encender en una sola corrida, típicamente desatendida. Si tu piloto avanza etapa por etapa como manda la regla madre del `SKILL.md`, no hace falta este documento: alcanza con `0.plan.md` + `2.plan-piloto.md` + `3.ejecucion-piloto.md`.
 >
-> **Copia canónica:** vive en la raíz del proyecto del piloto. El estado vivo por frente durante la ejecución va en un tablero separado (ver §5.1) — no mezcles el plan con el estado corriendo.
+> **Copia canónica:** vive en la raíz del proyecto del piloto. El estado vivo por frente durante la ejecución va en un tablero separado (ver §5.1) — no mezcles el plan con el estado en curso.
 >
 > **Instrucción de llenado:** completá cada `{{PLACEHOLDER}}` antes de arrancar la corrida. Lo que no sepas todavía NO se inventa: va como ítem en el buffer de datos a validar (§9), nunca como un placeholder rojo suelto en medio de un entregable.
 >
@@ -16,7 +16,7 @@
 
 > **Regla dura de esta sección:** separá siempre lo que verificaste de primera mano (abriste la fuente, leíste el dato, corriste el chequeo) de lo que estás asumiendo porque alguien lo dijo o porque "tiene sentido". Un PRD que mezcla ambos sin marcarlos es la causa raíz del aprendizaje caro de §2.1.
 
-**Hecho (verificado):** {{qué ya existe y funciona, con la fuente de verificación de cada ítem — no alcanza con "está hecho", hay que poder decir cómo se sabe. Ej.: "landing del estudio contable publicada y trackeando" → fuente: visita directa + Network tab con el pixel disparando.}}
+**Hecho (verificado):** {{qué ya existe y funciona, con la fuente de verificación de cada ítem — no alcanza con "está hecho", hay que poder decir cómo se sabe. Ej.: "landing del estudio contable publicada y registrando" → fuente: visita directa + Network tab con el pixel disparando.}}
 
 **Novedades desde la última corrida ({{FECHA}}):** {{qué cambió el contexto — accesos nuevos, decisiones tomadas, bloqueos resueltos}}.
 
@@ -26,7 +26,7 @@
 
 ### 2.1 — Aprendizaje caro: fuentes de datos externos, siempre verificables y contra-verificadas
 
-Un agente puede reportar como "dato real" algo sacado de una fuente que **no existe** (caso real que motivó esta regla: un agente citó una cuenta de Google Ads con un ID de cuenta inventado, que no estaba en el selector de cuentas real). El daño no es el dato falso en sí mismo, es que **entra a un modelo de presupuesto** y de ahí a una decisión de plata real.
+Un agente puede reportar como "dato real" algo sacado de una fuente que **no existe** (caso real que motivó esta regla: un agente citó una cuenta de Google Ads con un ID de cuenta inventado, que no estaba en el selector de cuentas real). El daño no es el dato falso en sí mismo, es que **entra a un modelo de presupuesto** y de ahí a una decisión de inversión real.
 
 Regla para este kickoff: **todo dato externo (CPC, tamaño de audiencia, costo de una herramienta, cualquier número que un agente "trajo" de una fuente externa, ej.: "el CPC de 'contador PyME' en tu ciudad es de $X") tiene que declarar su fuente de forma verificable** (screenshot, URL exacta, ID de cuenta/recurso que otra persona pueda abrir, timestamp de cuándo se leyó) **y pasar por un agente distinto al que lo generó antes de entrar a un modelo de presupuesto o a un entregable externo.** Un número sin fuente verificable no es un dato, es una alucinación con formato de dato: se marca como `{{ASUMIDO}}` en la sección 2 y no se usa para calcular budget hasta que alguien lo verifique.
 
@@ -54,7 +54,7 @@ Regla para este kickoff: **todo dato externo (CPC, tamaño de audiencia, costo d
 
 | Recurso | Acceso | Impacto | Si falla |
 |---|---|---|---|
-| {{Repo de código}} | {{Sí/No/Verificar}} | {{qué frentes dependen}} | {{fallback: cambios vía prompts de la plataforma no-code / se parkea}} |
+| {{Repo de código}} | {{Sí/No/Verificar}} | {{qué frentes dependen}} | {{fallback: cambios vía prompts de la plataforma no-code / se pausa}} |
 | {{Cuenta de ads — canal 1, ej. Google}} | {{Sí/No/Verificar}} | {{Keyword Planner + carga de campañas}} | {{fallback: research con rangos marcados como estimación}} |
 | {{Cuenta de ads — canal 2, ej. Meta}} | {{Sí/No/Verificar}} | {{audiencias + campañas}} | {{solo spec + playbook, no carga real}} |
 | {{Sistema de mail / ESP}} | {{Sí/No/Verificar}} | {{secuencia de nurture}} | {{fallback documentado a otro proveedor}} |
@@ -69,17 +69,17 @@ Orquestador = {{esta sesión / agente designado}}, modo multifrente {{desatendid
 
 ### 5.1 — Tablero de estado (separado de este PRD)
 
-Este documento es el plan; el estado corriendo vive en un **tablero vivo separado** (ej. `3.ejecucion-piloto.md` o equivalente) con una tabla `Frente | Wave | Estado | Output | Nota` y un log de la corrida. No mezcles plan con estado: el plan no cambia una vez arrancada la corrida (salvo un hallazgo que lo justifique, documentado), el estado cambia todo el tiempo.
+Este documento es el plan; el estado en curso vive en un **tablero vivo separado** (ej. `3.ejecucion-piloto.md` o equivalente) con una tabla `Frente | Wave | Estado | Output | Nota` y un log de la corrida. No mezcles plan con estado: el plan no cambia una vez arrancada la corrida (salvo un hallazgo que lo justifique, documentado), el estado cambia todo el tiempo.
 
 ### 5.2 — Gate de verificación por frente
 
 Al cerrar cada frente, el orquestador corre el verificador de tu harness sobre el output (fan-out por claim pesado contra la fuente + un crítico de **familia de modelo distinta al ejecutor**, nunca el mismo modelo que produjo el output — así no se audita a sí mismo). Veredicto:
 - ✅ → frente cerrado, status actualizado en el tablero.
-- ⚠/❌ → el veredicto vuelve al subagente del frente con instrucción de ajustar. **Máximo {{N, ej. 2}} iteraciones**; si no cierra, se parkea con nota en el buffer de datos a validar (§9) y la corrida sigue (nunca loop infinito).
+- ⚠/❌ → el veredicto vuelve al subagente del frente con instrucción de ajustar. **Máximo {{N, ej. 2}} iteraciones**; si no cierra, se pausa con nota en el buffer de datos a validar (§9) y la corrida sigue (nunca loop infinito).
 
-### 5.3 — Regla de propagación de parkeos (la pieza más valiosa de este método)
+### 5.3 — Regla de propagación de pausas (la pieza más valiosa de este método)
 
-Un frente **no se cierra en silencio con un input incompleto.** Si un frente se parkea, todo frente que dependa de él según el mapa de dependencias queda marcado **`degradado`**, nunca ✅. Un frente degradado:
+Un frente **no se cierra en silencio con un input incompleto.** Si un frente se pausa, todo frente que dependa de él según el mapa de dependencias queda marcado **`degradado`**, nunca ✅. Un frente degradado:
 - **se ejecuta igual**, con el mejor input disponible — nunca frena la corrida completa por la falla de un solo frente;
 - **declara arriba de su propio entregable** qué input le faltó y qué asumió en su lugar (no lo esconde en un aside, va al principio del documento que produce);
 - **entra automáticamente al buffer de datos a validar** (§9) como ítem a rehacer cuando el frente padre se destrabe;
@@ -89,9 +89,9 @@ Un frente **no se cierra en silencio con un input incompleto.** Si un frente se 
 
 | Símbolo | Estado | Significado |
 |---|---|---|
-| ✅ | Cerrado | Pasó el gate de verificación con crítico de familia distinta. Sin dependencias parkeadas arriba en la cadena. |
-| ⚠ | Degradado | Se ejecutó con input incompleto porque un padre se parkeó (o el propio frente no cerró el gate del todo). Declara qué asumió. Nunca sube a ✅ sin rehacerse con el input completo. |
-| ⏸ | Parkeado | No cerró en las iteraciones máximas del gate. Nota abierta en el buffer de datos a validar. |
+| ✅ | Cerrado | Pasó el gate de verificación con crítico de familia distinta. Sin dependencias pausadas arriba en la cadena. |
+| ⚠ | Degradado | Se ejecutó con input incompleto porque un padre se pausó (o el propio frente no cerró el gate del todo). Declara qué asumió. Nunca sube a ✅ sin rehacerse con el input completo. |
+| ⏸ | Pausado | No cerró en las iteraciones máximas del gate. Nota abierta en el buffer de datos a validar. |
 | ⏳ | Pendiente / corriendo | Todavía no se ejecutó o está en curso. |
 
 ### 5.4 — Aprendizaje caro: la relación fuente→artefacto tiene que ser explícita y probada
