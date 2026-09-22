@@ -18,6 +18,11 @@
   negocio ya andando) repetían lo que la apertura ya resuelve. Las cinco que quedan son entradas
   que de verdad son otra cosa: research solo, el modelo de CAC/LTV solo, los roles de optimización,
   un componente de funnel suelto y el postmortem.
+- **Del commit `ajustes textos readme`, hecho en paralelo:** la lista de asistentes suma Hermes y
+  Openclaw ("etc." al final, porque cualquiera que lea markdown sirve), y la **matrícula** pasó a
+  llamarse **derecho de piso**. Los otros tres cambios de ese commit (sacar "en criollo", sacar
+  "esto es lo que lo hace distinto" y sacar "La mayoría gasta mal en un piloto") coincidían con lo
+  que ya había hecho la pasada de anti-slop.
 - Tocados: `README.md`, `VERSION`, `CHANGELOG.md`.
 
 ## 1.4.0 (2026-09-22)

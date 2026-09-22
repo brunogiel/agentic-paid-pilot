@@ -2,7 +2,7 @@
 
 > **Sigue la metodología Lean Startup.** Construir, medir, aprender, con dinero real y un tope que corta cuando los números no dan. Cada etapa cierra con una decisión de matar o perseverar, tomada con un número adelante y no con una corazonada.
 
-¿Querés saber si Google, Meta u otros canales de publicidad digital te pueden traer clientes a un precio que cierre? Sea para explorar nuevas ideas de negocios o probar canales para negocios que ya están funcionando. Este kit le enseña a tu asistente de IA (ChatGPT, Claude, Cursor) un método paso a paso para armar y correr un **piloto**: una prueba chica y controlada en Google y Meta, con un tope de inversión que corta a tiempo cuando el canal no da. Además, tiene un kit completo que te puede servir si ya estás operando canales digitales.
+¿Querés saber si Google, Meta u otros canales de publicidad digital te pueden traer clientes a un precio que cierre? Sea para explorar nuevas ideas de negocios o probar canales para negocios que ya están funcionando. Este kit le enseña a tu asistente de IA (ChatGPT, Claude, Cursor, Hermes, Openclaw, etc.) un método paso a paso para armar y correr un **piloto**: una prueba chica y controlada en Google y Meta, con un tope de inversión que corta a tiempo cuando el canal no da. Además, tiene un kit completo que te puede servir si ya estás operando canales digitales.
 
 Son instrucciones que tu asistente de IA lee y sigue con vos: no hay nada que instalar.
 
@@ -28,7 +28,7 @@ El orden de impacto de las decisiones de un piloto, de la que más pesa a la que
 4. Que la página sea clara: la claridad pesa más que la estética.
 5. La limpieza de palabras clave. Importa, pero es lo de menos peso.
 
-Y una distinción que te ahorra dinero: hay gasto que es **matrícula** (el precio de aprender algo que no podías saber de antes, se paga sí o sí) y gasto que es **impuesto evitable** (inversión desperdiciada en clics irrelevantes que se corta desde el día uno). El método te ayuda a no confundirlos.
+Y una distinción que te ahorra dinero: hay gasto que es **derecho de piso** (el precio de aprender algo que no podías saber de antes, se paga sí o sí) y gasto que es **impuesto evitable** (inversión desperdiciada en clics irrelevantes que se corta desde el día uno). El método te ayuda a no confundirlos.
 
 ## Para qué se puede usar
 
