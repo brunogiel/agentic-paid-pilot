@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.4.0 (2026-09-22)
+
+- **El README deja de encuadrar todo como "lanzar un piloto".** El kit servía desde siempre para
+  más casos que el piloto completo, pero el README solo contaba ese, así que alguien que ya tiene
+  el negocio andando y quiere abrir un canal pago por primera vez no se reconocía en el texto y se
+  iba. Ahora hay una sección **Para qué se puede usar** con una tabla de siete situaciones, cada
+  una con su puerta de entrada al kit y lo que deja: el método completo, las etapas de research
+  sueltas, el modelo de CAC/LTV solo, los roles de optimización para campañas que ya corren, los
+  componentes de funnel, y el postmortem. La vieja sección "Cómo lo usás" quedó absorbida ahí
+  adentro para que el mismo dato no viva en tres lugares del documento. El título y el primer
+  párrafo también se abrieron: el piloto sigue siendo el caso central, ya no el único.
+- **Pasada de anti-slop sobre el README.** Once correcciones, casi todas del mismo patrón: el
+  reframe "no es X, es Y" ("no son clientes: es una respuesta", "no es una app", "la puerta de
+  entrada, no el techo", "no arrancan nada: optimizan"). Se reemplazaron por la afirmación
+  positiva sola. También se sacó el puffery del heading "La idea de fondo (esto es lo que lo hace
+  distinto)", dos cierres que repetían lo ya dicho y el arranque de párrafo "La mayoría gasta mal
+  en un piloto".
+- Tocados: `README.md`, `VERSION`, `CHANGELOG.md`.
+
 ## 1.3.0 (2026-09-22)
 
 - **Registro editorial: se saca el coloquialismo, se mantiene el voseo.** El kit estaba escrito en
