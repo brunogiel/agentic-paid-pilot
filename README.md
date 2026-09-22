@@ -1,14 +1,12 @@
-# lanzar-piloto: validá un negocio con publicidad paga, con un tope de inversión
+# lanzar-piloto: validá un canal de adquisición digital con un tope de inversión
 
 > **Sigue la metodología Lean Startup.** Construir, medir, aprender, con dinero real y un tope que corta cuando los números no dan. Cada etapa cierra con una decisión de matar o perseverar, tomada con un número adelante y no con una corazonada.
 
-¿Tenés una idea de negocio o un servicio nuevo y querés saber si la gente lo va a pagar, antes de invertir una suma importante en publicidad? Este kit le enseña a tu asistente de IA (ChatGPT, Claude, Cursor) un método paso a paso para armar y correr un **piloto**: una prueba chica y controlada de publicidad en Google y Meta, con un tope de inversión para cortar a tiempo si no funciona.
-
-El piloto es el caso central. El mismo método sirve si ya tenés el negocio andando y nunca abriste un canal pago, si querés saber si hay mercado antes de gastar el primer peso, o si necesitás una sola pieza del funnel. Las partes se usan sueltas: ver [Para qué se puede usar](#para-qué-se-puede-usar).
+¿Querés saber si Google, Meta u otros canales de publicidad digital te pueden traer clientes a un precio que cierre? Sea para explorar nuevas ideas de negocios o probar canales para negocios que ya están funcionando. Este kit le enseña a tu asistente de IA (ChatGPT, Claude, Cursor) un método paso a paso para armar y correr un **piloto**: una prueba chica y controlada en Google y Meta, con un tope de inversión que corta a tiempo cuando el canal no da. Además, tiene un kit completo que te puede servir si ya estás operando canales digitales.
 
 Son instrucciones que tu asistente de IA lee y sigue con vos: no hay nada que instalar.
 
-Un piloto te deja una respuesta con números a la pregunta de si esto se puede vender. Cuando la respuesta es que no, el tope de inversión te lo dice temprano y barato.
+Un piloto te dice si ese canal puede vender lo que vendés y a qué precio. Te deja el canal armado con su costo de adquisición real, las palancas que quedaron sin tocar, y lo que aprendiste del mercado aunque el canal no haya funcionado: qué busca la gente, qué ángulo enganchó, contra quién competís.
 
 ## Cómo funciona
 
@@ -20,11 +18,11 @@ El método va en 5 etapas. En cada una tu asistente te muestra lo que hizo y te 
 4. **Ejecución.** Escribe los avisos, arma las páginas, configura las campañas y el seguimiento, y deja todo listo para prender.
 5. **Operación y cierre.** Ya con las campañas prendidas: te arma el reporte periódico de "cómo venimos", te ayuda a decidir si seguís, pivotás o matás el gate cuando se acaba el presupuesto, y cuando el piloto termina te deja el postmortem + un checklist para apagar todo lo que quedó corriendo.
 
-## La idea de fondo
+## Dónde se gana o se pierde el dinero
 
-El método ordena **dónde se gana o se pierde el dinero**, de lo que más importa a lo que menos:
+El orden de impacto de las decisiones de un piloto, de la que más pesa a la que menos:
 
-1. ¿El mercado responde a tu oferta? Es lo único que el piloto realmente prueba.
+1. ¿El mercado responde a tu oferta? Si la respuesta es no, ningún canal lo arregla.
 2. ¿En qué canal ponés el presupuesto? La decisión más cara de todas.
 3. Tu oferta y cómo la presentás.
 4. Que la página sea clara: la claridad pesa más que la estética.
@@ -34,19 +32,17 @@ Y una distinción que te ahorra dinero: hay gasto que es **matrícula** (el prec
 
 ## Para qué se puede usar
 
-Se usa con tu asistente de IA: le señalás la parte que necesitás y le pedís que la siga. Cada parte funciona sola.
+El piloto completo son las 5 etapas de arriba. Pero cada parte funciona sola, y muchas veces alcanza con una:
 
-| Tu situación | Por dónde entrás | Qué te deja |
+| Si lo que querés es | Pedile | Y te deja |
 |---|---|---|
-| Tenés una idea o un servicio nuevo y no sabés si alguien lo va a pagar | el método completo, `SKILL.md` | un veredicto con números sobre si se puede vender |
-| El negocio ya anda, pero nunca abriste un canal pago | etapas 1 a 3 (`s1*`, `s2*`, `s3*`) | campañas armadas, medidas y con un tope de inversión |
-| Querés saber si hay mercado antes de gastar el primer peso | etapa 1 sola (`s1a` a `s1d`) | volúmenes de búsqueda, avisos de competidores, tamaño de audiencia |
-| Necesitás los números antes de decidir nada | `s2a-modelar-funnel` | CAC contra LTV en 4 escenarios, con fórmulas vivas |
-| Ya tenés campañas corriendo y rinden mal | `roles/campaign-auditor`, `roles/search-query-analyst` | una auditoría de cuenta y una lista de negativas |
-| Te falta una pieza suelta del funnel | `componentes/` | lead magnet, agendamiento, CRM, WhatsApp, A/B o GEO, implementados |
-| Algo terminó y no querés perder el aprendizaje | `s4b-postmortem` | el postmortem + el checklist de apagado |
+| medir el mercado sin gastar en avisos todavía | la etapa 1 (`s1a` a `s1d`) | volúmenes de búsqueda, los avisos que corren tus competidores, tamaño de audiencia |
+| los números antes de decidir nada | `s2a-modelar-funnel` | CAC contra LTV en 4 escenarios, con fórmulas vivas |
+| arreglar campañas que ya corren y rinden mal | `roles/campaign-auditor`, `roles/search-query-analyst` | una auditoría de cuenta y una lista de negativas |
+| una pieza suelta del funnel | `componentes/` | lead magnet, agendamiento, CRM, WhatsApp, A/B o GEO, implementados |
+| que un piloto cerrado no se lleve el aprendizaje | `s4b-postmortem` | el postmortem + el checklist de apagado |
 
-Ejemplos de pedido suelto: "investigá los competidores de X", "armá los números de Y", "configurame el agendamiento".
+Se pide con una frase: "investigá los competidores de X", "armá los números de Y", "configurame el agendamiento".
 
 ## Componentes implementables
 
@@ -88,7 +84,7 @@ El kit está escrito alrededor de un piloto porque es donde la improvisación sa
 
 ## Un par de términos que vas a ver
 
-- **Piloto:** una prueba chica y controlada de publicidad, con un tope de inversión.
+- **Piloto:** una prueba chica y controlada de un canal de publicidad, con un tope de inversión.
 - **Tope (o gate) de budget:** un freno. Prendés solo una parte del presupuesto y el resto queda apagado hasta que los números den bien. Sirve para cortar antes de gastar todo.
 - **Landing:** la página a la que llega la gente cuando hace clic en un aviso.
 - **CAC / LTV:** lo que te cuesta conseguir un cliente contra lo que ese cliente te deja en total. Si el segundo es bastante más grande que el primero, el negocio cierra.

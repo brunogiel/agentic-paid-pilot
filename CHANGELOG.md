@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.5.0 (2026-09-22)
+
+- **El README cambia de objeto: lo que el piloto valida es el canal, no el negocio.** El encuadre
+  anterior ("validá un negocio con publicidad paga") dejaba afuera al que ya tiene el negocio
+  facturando y solo quiere saber si Google o Meta le sirven, que es la mitad de los casos. El
+  título ahora es "validá un canal de adquisición digital con un tope de inversión", y la apertura
+  cubre los dos casos en la misma frase en vez de abrir con el caso nuevo y corregirse en el
+  párrafo siguiente. El párrafo de qué te deja un piloto también cambió: antes prometía "una
+  respuesta sobre si esto se puede vender", ahora dice lo que realmente queda, que es el canal
+  armado con su costo de adquisición real, las palancas sin tocar y el aprendizaje de mercado que
+  sobrevive aunque el canal no haya funcionado.
+- **"La idea de fondo" pasó a "Dónde se gana o se pierde el dinero".** Su primer punto decía que la
+  respuesta del mercado a la oferta era "lo único que el piloto realmente prueba", que contradecía
+  de frente el encuadre nuevo. Ahora dice que si el mercado no responde, ningún canal lo arregla.
+- **"Para qué se puede usar" bajó de siete filas a cinco.** Las dos que salieron (idea nueva,
+  negocio ya andando) repetían lo que la apertura ya resuelve. Las cinco que quedan son entradas
+  que de verdad son otra cosa: research solo, el modelo de CAC/LTV solo, los roles de optimización,
+  un componente de funnel suelto y el postmortem.
+- Tocados: `README.md`, `VERSION`, `CHANGELOG.md`.
+
 ## 1.4.0 (2026-09-22)
 
 - **El README deja de encuadrar todo como "lanzar un piloto".** El kit servía desde siempre para
