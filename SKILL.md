@@ -99,6 +99,15 @@ Triggea con frases como: "tengo una idea para X", "quiero validar algo", "no sé
 2. Con esos insumos, correr `s1a-research-mercado` inline (checklist de viabilidad + competitive + síntesis "3 movimientos"). Escribe `1.research.md`.
 3. Checkpoint: presentar el veredicto del checklist (AVANZAR / no) + los 3 movimientos. Esperar OK.
 
+**Clasificar en volumen (opcional).** Tres pasos de esta etapa terminan juzgando cientos de ítems
+de a uno: keywords del planner (`s1b` Paso 2), avisos del Ad Library (`s1c` Paso 2), negativas
+candidatas (`s1b` Paso 4). Para eso hay un acelerador **opcional** con jev, `scripts/clasificar.py`:
+una llamada por ítem, respuesta tipada. **Es un script, no un fan-out de subagentes**, así que no
+toca la regla "único fan-out permitido" de arriba. **Sin key de typesafe, cada paso corre por su
+camino de siempre y no falta nada.** La regla que no se negocia: jev llena campos por ítem, y el
+corte lo hace el código sobre dato duro (volumen y CPC del planner, tamaño de audiencia de la API),
+nunca la confianza del modelo. Es experimental: ver [`reference/clasificar-con-jev.md`](reference/clasificar-con-jev.md).
+
 **Etapa 2 — Experimento** `[LATENT]`
 1. `s2a-modelar-funnel` → modelo CAC/LTV con 4 escenarios (xlsx con fórmulas vivas).
 2. `s2b-disenar-experimento` → hipótesis, KPIs/success metrics, **gate de budget**, premortem, y el `_backbone.md` (contrato de invariantes). Escribe `2.plan-piloto.md`.
@@ -209,6 +218,8 @@ Si la etapa tiene más de una child skill, `child_skills_corridas` lista todas. 
 ```
 
 ## Referencias externas
+
+- **Clasificar en volumen con jev (opcional, experimental):** [`reference/clasificar-con-jev.md`](reference/clasificar-con-jev.md) — acelerador de los pasos de research que juzgan cientos de ítems. Las 3 primitivas, cómo se escribe un pack de preguntas, la regla "el corte lo hace el código sobre dato duro", y el back-test medido. **No hace falta para usar el playbook.**
 
 - **Corrida de referencia:** (reemplazá con tu propia corrida de referencia cuando tengas una) — un piloto ya completado end-to-end (incluidas las Etapas 0-4: research, ejecución, operación y cierre) sirve como el "cómo se hace en la práctica". Leerlo antes de arrancar uno nuevo.
 

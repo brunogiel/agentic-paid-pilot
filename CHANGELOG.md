@@ -1,5 +1,35 @@
 # Changelog
 
+## 1.6.0 (2026-09-22)
+
+- **Nuevo: acelerador OPCIONAL para clasificar en volumen en el research** (`scripts/` +
+  [`reference/clasificar-con-jev.md`](reference/clasificar-con-jev.md)). Tres pasos de la Etapa 1
+  terminan juzgando cientos de ítems de a uno (keywords del planner, avisos del Ad Library,
+  negativas candidatas). Hacerlo en tanda con un modelo de texto deriva: el juicio de un ítem
+  contagia al vecino. Ahora se puede hacer con un modelo de decisiones tipadas, una llamada por
+  ítem. **Nada del método lo necesita:** sin configurar nada, cada paso corre por su camino de
+  siempre y el playbook está completo. Es experimental y el archivo de referencia arranca diciendo
+  qué está probado y qué no.
+- **Lo que lo motivó, medido, no supuesto.** Sobre 32 avisos crudos del Ad Library de un piloto
+  real, la expresión regular del swipe dejó pasar 16 y **10 de esos 16 no eran competencia**: una
+  masterclass para futuros contadores (era el primer aviso del archivo), tres avisos que venden
+  formación a colegas del rubro, dos de software y uno de un producto, un proveedor de otro país, y
+  dos avisos con el título `{{product.name}}` sin reemplazar. El swipe del que salían los ángulos
+  tenía mayoría de avisos que no eran competencia. Una regex no puede separar «curso de
+  contabilidad» de «servicio de contabilidad»: usan las mismas palabras.
+- **Dos correcciones de método que valen sin usar el acelerador.** (1) El **hueco de mensaje se
+  cuenta**, no se opina: se listan los ángulos posibles y se tilda cuáles aparecen, porque un
+  ángulo con 0 avisos no está en el texto que el asistente lee y ahí no lo puede encontrar. (2) El
+  **guardián anti-over-block se parte en dos**: el match literal negativa×término es código (y así
+  reproduce que las negativas de frase no agarran plurales ni variantes), y solo lo semántico va a
+  un modelo.
+- **`s1a` Paso 2 deja de repartir el `threat` entre subagentes.** Si cada subagente puntúa la
+  amenaza de su competidor sin ver a los otros, cada uno calibra su propia escala y el ranking no se
+  sostiene. El camino default ahora es que los subagentes devuelvan el perfil sin el número, y que
+  el padre puntúe a todos de una sola vez con los perfiles a la vista.
+- `s1c-swipe-ads-competidores/scripts/build_swipe.py` suma tres variables de entorno **opcionales**
+  (`SWIPE_EMITIR_ITEMS`, `SWIPE_CLASIFICACION`, `SWIPE_UMBRAL`). Sin ellas produce el mismo swipe
+  que antes, byte a byte (verificado por diff contra la versión anterior del script).
 ## 1.5.0 (2026-09-22)
 
 - **El README cambia de objeto: lo que el piloto valida es el canal, no el negocio.** El encuadre

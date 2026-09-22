@@ -1,0 +1,26 @@
+{
+  "descripcion": "Guardian anti-over-block: audita cada negativa candidata ANTES de cargarla. Consume s1b-kw-research-google (Paso 4). El match literal (que terminos contienen el token) lo hace el codigo: es comparacion de texto, y ademas cubre que las negativas de frase no agarran variantes ni plurales. Lo que se le pregunta a jev es lo semantico: si existe cliente real detras de ese token. OJO CON EL STATE: el token pelado no alcanza. Medido sobre las negativas que habian bloqueado clientes en un piloto real de servicios de contabilidad, 'part time' y 'at home' con el token solo se leen como lenguaje de alguien que busca trabajo, y jev los mando a basura_universal; con las busquedas reales que los contienen en el state, mata_icp_p salto de 0,55 a 0,91 y de 0,57 a 0,88. El state va asi: {\"texto_de_la_negativa\": \"part time\", \"busquedas_reales_que_lo_contienen\": [\"part time bookkeeper for small business\", ...]}, y esa lista la arma el match literal del codigo sobre las keywords del Planner o el search-terms report.",
+  "variables": [
+    "SERVICIO",
+    "CLIENTE"
+  ],
+  "preguntas": {
+    "mata_icp": {
+      "type": "noul",
+      "instructions": "Vendemos {SERVICIO} a {CLIENTE}. Estamos por cargar `texto_de_la_negativa` como palabra clave negativa en Google Ads: toda busqueda que lo contenga deja de ver nuestro anuncio. Mirando las busquedas de `busquedas_reales_que_lo_contienen`, decidi si alguna de ellas la escribio un cliente que SI nos quiere contratar. Si esa lista viene vacia, imaginate las busquedas mas frecuentes que contendrian ese texto.",
+      "criteria": {
+        "true": "Si: se me ocurre al menos una busqueda de un cliente que quiere contratar y que incluye ese texto. Bloquearlo nos hace perder clientes en silencio.",
+        "false": "No: ninguna busqueda de un cliente que quiere contratar usa ese texto. Bloquearlo solo tapa trafico que no compra."
+      }
+    },
+    "balde": {
+      "type": "choice",
+      "instructions": "Vendemos {SERVICIO} a {CLIENTE}. Clasifica el texto de abajo como candidato a palabra clave negativa, segun cuando conviene cargarlo.",
+      "criteria": {
+        "basura_universal": "Se carga el dia cero sin pensarlo: no hay cliente posible detras. Empleo, sueldos, cursos, certificaciones, gratis, plantillas, hazlo-tu-mismo, definiciones.",
+        "dudoso": "Podria ir para los dos lados segun como siga la busqueda. No se pre-bloquea: se decide leyendo el informe de terminos cuando la campania ya corre.",
+        "riesgoso_para_icp": "Hay cliente que compra usando ese texto. Cargarlo mata ventas. Entran aca el precio y el presupuesto, el nombre del software que el cliente usa, el idioma, la zona, y el plural o la variante de un termino que si es del negocio."
+      }
+    }
+  }
+}

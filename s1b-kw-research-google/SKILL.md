@@ -31,6 +31,18 @@ Reemplaza los "rough estimates" por datos reales del Keyword Planner antes de en
 
 **Paso 2 [LATENT] — Priorización por intención.** Clasificar cada keyword por intención (transaccional alta / media / informacional) y descartar las que no son del negocio. Las longtail con CPC bajo + intención alta son oro para un piloto cold (regla madre del playbook).
 
+**El orden NO lo decide el modelo.** La intención es una etiqueta por keyword; el ranking sale del
+volumen y el CPC, que son dato duro del planner. Pedirle a un modelo que ordene 800 keywords en
+una escala da un orden que no se sostiene.
+
+*[opcional]* Cuando el planner devuelve cientos de keywords, clasificarlas en tanda hace que el
+juicio de una contagie a la vecina. Con una key de typesafe, una llamada por keyword:
+`python3 ../scripts/clasificar.py --items keywords.jsonl --pack ../scripts/preguntas/keywords.json
+--var SERVICIO="…" --var CLIENTE="…" --salida clasif-kw.csv`. Devuelve `intencion` +
+`quiere_contratar_p`; el corte y el orden los sigue haciendo el código con el volumen y el CPC.
+Sin key, este paso va [LATENT] como siempre, en tandas chicas del mismo ad group para que el
+contexto no se mezcle. Ver [`reference/clasificar-con-jev.md`](../reference/clasificar-con-jev.md).
+
 **Paso 3 [LATENT] — Estructura de campañas.** Agrupar en ad groups temáticos (exact + phrase), mapear a las campañas del piloto (ej. local / idioma / probe), y asignar match types. Apoyarse en `../roles/google-ads-strategist.md` para los tiers de estructura.
 
 **Paso 4 [LATENT] — Negativas con lente ICP + CPC.** Armar la lista de negativas clasificando la intención en tres baldes: **ICP** (quiere contratar/comprar), **no-ICP** (jobs/salary, educación/cursos/how-to/what-is, DIY/software/templates, competidores por nombre, industrias OUT) y **dudoso** (genérico/price-shopping). Las negativas tapan el no-ICP.
@@ -43,6 +55,26 @@ Dos reglas que suelen costar caro aprender:
 - **No sobre-bloquear ICP.** Cada negativa candidata se chequea contra los términos ICP: una negativa de más mata leads en silencio (ej. términos como "for individuals", "part time" o "at home" pueden filtrar gente que quiere contratar; "pricing"/"going rate" a veces matan price-shoppers que SÍ compran). NO negativizar el software del cliente (si querés "[software] [servicio]"), ni "near me"/idioma/[industria IN], ni el plural/variante de un término ICP (`franchises` mata "[servicio] for franchises").
 - **Frase no agarra variantes.** Las negativas NO tienen close-variants: `gig` no tapa `gigs`, un script no latino no matchea. Cubrir plurales/sinónimos a mano.
 Para un panel robusto, barrer con varias lentes (jobs/educación/DIY, competidores/marcas, industrias OUT, short-tail/servicios adyacentes, y un **guardián anti-over-block** que audita que ninguna negativa mate ICP). CPC realista por campaña del planner, no del benchmark.
+
+**El guardián, en dos mitades.** La auditoría anti-over-block tiene una parte mecánica y una
+semántica, y conviene no mezclarlas:
+1. **[DET] El match literal lo hace el código.** ¿Qué términos ICP contienen el texto de la
+   negativa? Es comparación de texto, y de paso reproduce lo que hace Google: las negativas de
+   frase no agarran plurales ni variantes, así que el match literal ES el comportamiento real. A un
+   modelo no se le pregunta esto.
+2. **[LATENT / opcional]** La pregunta semántica es «¿hay una búsqueda frecuente de alguien que
+   quiere contratar y que contiene este texto?». Con key,
+   `python3 ../scripts/clasificar.py --items negativas.jsonl --pack ../scripts/preguntas/negativas.json
+   --var SERVICIO="…" --var CLIENTE="…" --salida clasif-neg.csv`.
+   ⚠ **El contexto lleva el texto MÁS las búsquedas reales que lo contienen** (las saca el match
+   literal del punto 1). Con el texto pelado, medido sobre un piloto real, `part time` y `at home`
+   se leen como lenguaje de alguien que busca empleo y se clasifican mal; con las búsquedas en el
+   contexto, la probabilidad salta de 0,55 a 0,91 y de 0,57 a 0,88.
+   **El guardián marca para revisar, no decide.** Va a ojo humano toda negativa con probabilidad
+   ≥ 0,5 de bloquear ICP, y toda negativa donde las dos respuestas se contradigan. Cargar a ciegas
+   por el CSV no: 5 textos marcados sobre 30 se leen en un minuto, y una negativa que bloquea
+   clientes se paga en gente que nunca llega. Sin key, el guardián corre como lente del `/panel`,
+   igual que siempre.
 
 **Paso 5:** devolver al orquestador la lista de KW prioritarias + CPC por campaña + negativas para alimentar `spec-campanias`.
 

@@ -28,6 +28,21 @@ Decide si el vertical merece un piloto y deja las bases para construirlo. Es el 
 
 **Paso 2 [LATENT][FANOUT] — Competitive.** Identificar los players del mercado (web search + el swipe de ads como insumo). Si hay >5 players relevantes, spawnear un `Agent` por player (o por grupo) con prompt autocontenido y retorno JSON `{player, tipo, pricing, diferenciador, threat}`; el padre arma el mapa. Producir: lenses de análisis (2-3 ejes que importan en este mercado), **posiciones sin ocupar**, posiciones gastadas (clichés a evitar), mapa de players. Detalle a `competitive-brief.md`, resumen a `1.research.md`.
 
+⚠ **El `threat` que devuelve cada subagente no es comparable entre players.** Cada uno puntúa sin
+ver a los otros, así que cada uno calibra su propia escala y el ranking no se sostiene. Dos formas
+de arreglarlo, en orden:
+- **Default:** los subagentes devuelven `{player, tipo, pricing, diferenciador, evidencia}` **sin**
+  `threat`, y el padre puntúa los N players de una sola vez, con todos los perfiles a la vista. Una
+  sola escala, un solo juez.
+- *[opcional]* Con una key de typesafe, `python3 ../scripts/clasificar.py --items players.jsonl
+  --pack ../scripts/preguntas/players.json --var SERVICIO="…" --var CLIENTE="…" --salida
+  clasif-players.csv`: un `score` por player contra una rúbrica fija, comparable porque cada llamada
+  se mide contra el mismo texto. El perfil en prosa lo sigue escribiendo el subagente.
+  Ver [`reference/clasificar-con-jev.md`](../reference/clasificar-con-jev.md).
+
+Lo que nunca va: que cada subagente traiga su propio número de amenaza y el padre los ordene como
+si fueran la misma escala.
+
 **Paso 3 [LATENT] — Síntesis "3 movimientos".** Destilar todo en los 3 movimientos que nadie está haciendo bien hoy y que el piloto va a explotar. Es el output más accionable de la etapa.
 
 **Paso 4 [LATENT] — Audiencias + benchmarks.** Volcar a `1.research.md` el targeting pagado (Google signals + Meta targeting, alimentado por la skill de sizing) y los benchmarks de paid del rubro (CPL, CR, close rate, CAC/LTV estimados con fuente).

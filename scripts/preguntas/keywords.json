@@ -1,0 +1,25 @@
+{
+  "descripcion": "Clasifica por intencion las keywords que devolvio el Keyword Planner. Consume s1b-kw-research-google (Paso 2). El state de cada item es la keyword; se le puede sumar volumen y CPC como contexto, pero el orden final lo hace el codigo con esos numeros, no el modelo.",
+  "variables": ["SERVICIO", "CLIENTE"],
+  "preguntas": {
+    "intencion": {
+      "type": "choice",
+      "instructions": "El texto es una busqueda que alguien escribio en Google. Clasifica que venia a hacer esa persona, sabiendo que nosotros vendemos {SERVICIO} a {CLIENTE}.",
+      "criteria": {
+        "transaccional_alta": "Viene a contratar ya: busca un proveedor, un precio, un presupuesto o alguien cerca que le haga el trabajo.",
+        "transaccional_media": "Esta evaluando: compara opciones, mira cuanto sale, busca resenias o alternativas. Todavia no eligio.",
+        "informacional": "Viene a entender o a resolverlo solo: que es, como se hace, requisitos, plantillas, tutoriales.",
+        "quiere_trabajar_del_rubro": "Busca empleo, sueldos, formacion o certificaciones del rubro. No es cliente: es colega o aspirante.",
+        "otro_negocio": "La busqueda es de otro rubro o de otro servicio. Aca no hay nada para nosotros."
+      }
+    },
+    "quiere_contratar": {
+      "type": "noul",
+      "instructions": "Decidi si quien escribio esta busqueda esta dispuesto a pagarle a alguien para que le resuelva el problema, en vez de resolverlo el mismo o solo informarse.",
+      "criteria": {
+        "true": "Si: la busqueda deja ver que quiere delegar y pagar. Incluye a quien pregunta el precio: preguntar cuanto sale es senial de compra, no de curiosidad.",
+        "false": "No: quiere aprender, hacerlo solo, conseguir algo gratis, o busca trabajo en el rubro."
+      }
+    }
+  }
+}

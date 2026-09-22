@@ -1,0 +1,40 @@
+{
+  "descripcion": "Clasifica los ads del Meta Ad Library: cuales son competencia de verdad y con que angulo hablan. Consume s1c-swipe-ads-competidores (Paso 2 y Paso 3). El state de cada item es el texto del ad (titulo + copy + CTA + anunciante).",
+  "variables": ["SERVICIO", "CLIENTE"],
+  "preguntas": {
+    "es_competidor": {
+      "type": "noul",
+      "instructions": "El texto es un anuncio de Facebook o Instagram. Decidi si el anuncio le ofrece {SERVICIO} a {CLIENTE}, es decir a quien va a contratar y pagar ese servicio.",
+      "criteria": {
+        "true": "Si: le vende {SERVICIO} a {CLIENTE}. Es competencia directa, alguien que se pelea por el mismo cliente que nosotros.",
+        "false": "No: el anuncio vende otra cosa. Entra aca todo esto, aunque nombre las mismas palabras del rubro: cursos, clases, capacitaciones, certificaciones o masterclass para quien quiere aprender el oficio; busquedas de empleo o convocatorias de personal; software, plantillas o herramientas para que el cliente lo haga solo; rubros distintos; y el anuncio que no se entiende que ofrece."
+      }
+    },
+    "a_quien_le_habla": {
+      "type": "choice",
+      "instructions": "Segun el texto del anuncio, quien es el destinatario al que le habla. Mira a quien le promete el beneficio, no de que tema habla.",
+      "criteria": {
+        "negocio_que_contrata": "Le habla a {CLIENTE}: alguien con el problema resuelto por {SERVICIO}, que lo va a delegar y pagar.",
+        "profesional_del_rubro": "Le habla a alguien que trabaja o quiere trabajar del rubro: le vende formacion, herramientas, clientes o crecimiento profesional. Toda masterclass, curso o certificacion cae aca.",
+        "consumidor_final": "Le habla a una persona por su vida privada, no por su negocio.",
+        "busca_empleado": "Es un aviso de trabajo: busca contratar gente, no vender un servicio.",
+        "no_se_entiende": "El texto no alcanza para saber a quien le habla."
+      }
+    },
+    "angulo": {
+      "type": "choice",
+      "instructions": "Cual es el argumento principal con el que este anuncio intenta convencer. Elegi el que domina el mensaje, no uno que aparece de costado.",
+      "criteria": {
+        "precio": "Compite por plata: es mas barato, tiene descuento, precio fijo o tarifa clara.",
+        "tiempo_del_cliente": "Le devuelve horas: lo libera de una tarea, deja de hacerlo el mismo.",
+        "velocidad": "Promete rapidez en la entrega o en la respuesta.",
+        "miedo_a_la_multa": "Apela al riesgo: errores, multas, deuda, problemas con el organismo de control, auditoria.",
+        "autoridad": "Se apoya en credenciales: matricula, anios de experiencia, casos, premios, tamanio de cartera.",
+        "cercania": "Se apoya en el trato: atencion personal, habla tu idioma, es local, te conoce.",
+        "tecnologia": "Se apoya en la herramienta: automatizacion, inteligencia artificial, panel en vivo, app.",
+        "garantia": "Ofrece una promesa con respaldo: devolucion, prueba gratis, sin contrato, resultado garantizado.",
+        "ninguno_claro": "El anuncio no defiende ningun argumento: se presenta y nada mas."
+      }
+    }
+  }
+}

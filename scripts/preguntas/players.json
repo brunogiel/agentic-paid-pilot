@@ -1,0 +1,33 @@
+{
+  "descripcion": "Puntua la amenaza de cada competidor con una rubrica fija. Consume s1a-research-mercado (Paso 2). Reemplaza el campo 'threat' que devuelve cada subagente: si cada agente puntua sin ver a los otros, cada uno calibra su propia escala y el ranking no es comparable. El state de cada item es el perfil del player que escribio el subagente: que vende, a quien, precio, diferenciador, tamanio, presencia en paid.",
+  "variables": [
+    "SERVICIO",
+    "CLIENTE"
+  ],
+  "preguntas": {
+    "amenaza": {
+      "type": "score",
+      "instructions": "Vamos a entrar a este mercado vendiendo {SERVICIO} a {CLIENTE}, con un piloto chico de campanias pagadas. El texto describe a un player que ya esta en el mercado. Puntua cuanto nos complica a nosotros, no cuanto vale la empresa.",
+      "criteria": [
+        "No nos toca: le vende otra cosa, o a otro cliente, o esta inactivo.",
+        "Nos roza: mismo cliente pero otra necesidad, o mismo servicio para un segmento que no vamos a tocar.",
+        "Compite de costado: se pelea el mismo cliente sin estar en los mismos canales pagados, o con una oferta bastante distinta a la nuestra.",
+        "Compite de frente: mismo cliente, oferta parecida, y se lo ve comprando el mismo trafico que queremos comprar.",
+        "Nos tapa: domina la categoria en el canal que necesitamos, con marca conocida, presupuesto sostenido y una propuesta que el cliente reconoce como la obvia."
+      ]
+    },
+    "tipo": {
+      "type": "choice",
+      "instructions": "Que clase de jugador es. Mira como entrega el servicio, no de que tamanio es.",
+      "criteria": {
+        "agencia_o_estudio": "Una empresa con equipo que presta el servicio a varios clientes.",
+        "profesional_independiente": "Una persona sola o un equipo muy chico, que vende su propio tiempo.",
+        "software": "Un producto que el cliente usa solo, con o sin soporte humano.",
+        "marketplace": "Junta oferta y demanda: conecta clientes con prestadores, no presta el servicio.",
+        "formacion_o_infoproducto": "Le vende formacion, coaching, plantillas o clientes a quien trabaja del rubro. No presta el servicio al cliente final: su cliente es el colega.",
+        "contenido_o_medio": "Gana por audiencia o publicidad: blog, canal, newsletter, comparador.",
+        "otro": "Ninguna de las anteriores describe como entrega."
+      }
+    }
+  }
+}

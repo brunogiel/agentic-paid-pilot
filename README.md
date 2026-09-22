@@ -78,7 +78,8 @@ El kit está escrito alrededor de un piloto porque es donde la improvisación sa
 | `s0` a `s4b` | cada paso del método, uno por archivo (incluye `s2c`, el spec de stack) |
 | `componentes/` | las 7 piezas de implementación de funnel de la tabla de arriba, una carpeta por componente |
 | `roles/` | 6 "expertos" de publicidad (Google, Meta, textos de aviso, medición) que el método consulta cuando los necesita |
-| `reference/` | referencia compartida (infra y credenciales, arquitecturas de funnel) |
+| `reference/` | referencia compartida (infra y credenciales, arquitecturas de funnel, y el acelerador opcional de clasificación en volumen) |
+| `scripts/` | motor **opcional** para clasificar en volumen (keywords, avisos, negativas) con un modelo de decisiones tipadas. Nada del método lo necesita: sin configurarlo, cada paso corre por su camino de siempre |
 | `templates/` | plantillas en blanco de los documentos que se van llenando (incluye `kickoff-prd-template.md`, para cuando el arranque es una corrida de muchos frentes en paralelo en vez de etapa por etapa) |
 | `ejemplo/` | una corrida de muestra (un negocio inventado), para ver cómo queda |
 

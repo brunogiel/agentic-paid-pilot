@@ -39,7 +39,30 @@ SWIPE_TERMS="contabilidad / contadora"                         # label para el h
 ```
 El script filtra por `RELEVANT`, descarta `NOISE`, dedupea, detecta idioma (ES/EN), baja las creatividades a `ads-creatives/` (idempotente, salta lo ya bajado) y escribe `competitor-ads-swipe.md` con copy + CTA + links a los archivos locales + link al Ad Library en vivo.
 
+**Paso 2b [DET][opcional] — Segundo corte: ¿es competencia de verdad?**
+
+> **Opcional y experimental.** Sin key de typesafe este paso no existe y el swipe se arma con la
+> regex igual que siempre. Ver [`reference/clasificar-con-jev.md`](../reference/clasificar-con-jev.md),
+> que arranca con lo que está probado y lo que no.
+
+La regex no distingue «curso de contabilidad» de «servicio de contabilidad», así que deja pasar
+cursos para colegas, avisos de empleo, software y otros países. **Medido sobre un piloto real: de
+los 16 avisos que pasó la regex, 10 no eran competencia** (el primero del archivo era una
+masterclass para futuros contadores). Con key, las 3 pasadas:
+```
+SWIPE_RELEVANT="…" SWIPE_EMITIR_ITEMS=items.jsonl python3 scripts/build_swipe.py raw.json
+python3 ../scripts/clasificar.py --items items.jsonl --pack ../scripts/preguntas/ads.json \
+    --var SERVICIO="…" --var CLIENTE="…" --salida clasif.csv     # --dry-run primero
+SWIPE_RELEVANT="…" SWIPE_CLASIFICACION=clasif.csv python3 scripts/build_swipe.py raw.json
+```
+
 **Paso 3 [LATENT] — Lectura de patrones.** Leer el swipe y extraer para el research: anunciantes con más volumen, **gap de mensaje** (qué ángulo/idioma nadie está usando), copies más efectivos observados. Eso alimenta `1.research.md § Meta Ads` y los wedges de `creativos-ads`.
+
+**El hueco de mensaje se cuenta, no se opina.** Pedirle al asistente que lea el swipe entero y
+diga qué ángulo falta es pedirle una combinatoria, y además un ángulo con 0 avisos es justo el que
+no aparece en el texto que está leyendo: no lo puede encontrar ahí. La forma correcta es listar
+primero los ángulos posibles y después tildar cuáles aparecen, nunca al revés. Si corrió el Paso
+2b, el script ya escribió esa tabla con el conteo y la lista de los que están en cero.
 
 ## Output esperado
 
