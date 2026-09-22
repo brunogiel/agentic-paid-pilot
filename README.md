@@ -2,13 +2,11 @@
 
 > **Sigue la metodología Lean Startup.** Construir, medir, aprender, con plata real y un tope que corta cuando los números no dan. Cada etapa cierra con una decisión de matar o perseverar, tomada con un número adelante y no con una corazonada.
 
-¿Tenés una idea de negocio o un servicio nuevo y querés saber si la gente lo va a pagar, antes de invertir un montón en publicidad? Este kit le enseña a tu asistente de IA (ChatGPT, Claude, Cursor) un método paso a paso para armar y correr un **piloto**: una prueba chica y controlada de publicidad en Google y Meta, con un tope de plata para cortar a tiempo si no funciona.
-
-No es una app ni un programa que instalás. Son instrucciones que tu asistente de IA lee y sigue con vos.
+¿Tenés una idea de negocio o un servicio nuevo y querés saber si la gente lo va a pagar, antes de invertir un montón en publicidad? Este kit le enseña a tu asistente de IA (ChatGPT, Claude, Cursor,Hermes, Openclaw, etc) un método paso a paso para armar y correr un **piloto**: una prueba chica y controlada de publicidad en Google y Meta, con un tope de plata para cortar a tiempo si no funciona.
 
 Lo que un piloto te deja no son clientes: es una respuesta con números atrás a la pregunta de si esto se puede vender. Cuando la respuesta es que no, el tope de plata te lo dice temprano y barato. Para eso está.
 
-## Cómo funciona, en criollo
+## Cómo funciona
 
 El método va en 5 etapas. En cada una tu asistente te muestra lo que hizo y te pide el OK antes de seguir (no dispara solo):
 
@@ -18,9 +16,9 @@ El método va en 5 etapas. En cada una tu asistente te muestra lo que hizo y te 
 4. **Ejecución.** Escribe los avisos, arma las páginas, configura las campañas y el seguimiento, y deja todo listo para prender.
 5. **Operación y cierre.** Ya con las campañas prendidas: te arma el reporte periódico de "cómo venimos", te ayuda a decidir si seguís, pivotás o matás el gate cuando se acaba la plata, y cuando el piloto termina te deja el postmortem + un checklist para apagar todo lo que quedó corriendo.
 
-## La idea de fondo (esto es lo que lo hace distinto)
+## La idea de fondo 
 
-La mayoría gasta mal en un piloto. El método ordena **dónde se gana o se pierde la plata**, de lo que más importa a lo que menos:
+El método ordena **dónde se gana o se pierde la plata**, de lo que más importa a lo que menos:
 
 1. ¿El mercado responde a tu oferta? Es lo único que el piloto realmente prueba.
 2. ¿En qué canal ponés la plata? La decisión más cara de todas.
@@ -28,7 +26,7 @@ La mayoría gasta mal en un piloto. El método ordena **dónde se gana o se pier
 4. Que la página sea clara (clara le gana a "linda").
 5. La limpieza de palabras clave. Importa, pero es lo de menos peso.
 
-Y una distinción que te ahorra plata: hay gasto que es **matrícula** (el precio de aprender algo que no podías saber de antes, se paga sí o sí) y gasto que es **impuesto evitable** (plata tirada en clics basura que se corta desde el día uno). El método te ayuda a no confundirlos.
+Y una distinción que te ahorra plata: hay gasto que es **derecho de piso** (el precio de aprender algo que no podías saber de antes, se paga sí o sí) y gasto que es **impuesto evitable** (plata tirada en clics basura que se corta desde el día uno). El método te ayuda a no confundirlos.
 
 ## Cómo lo usás
 
