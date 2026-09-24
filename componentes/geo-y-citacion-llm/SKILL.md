@@ -72,15 +72,31 @@ Por orden de rendimiento sobre hora de trabajo:
 6. **IndexNow** para acelerar la indexación. Acelera el descubrimiento, no es una palanca de citación en sí.
 7. `llms.txt`: **descartable.** Ningún proveedor grande confirmó que lo lea.
 
-## 3. Tensión conocida con `lead-magnet-y-nurture`
+## 3. Medir el lado técnico desde afuera: `is-agentic`
+
+```bash
+npx -y is-agentic@latest {dominio}          # reporte legible en la terminal
+npx -y is-agentic@latest {dominio} --json   # el mismo reporte como JSON
+```
+
+Escanea un dominio público y devuelve un `score` sobre 100 con los checks que no pasaron y el fix de cada uno. Tarda ~20-25 s, es gratis y no pide cuenta. El informe web queda en `https://is-agentic.com/scan/{dominio}`. Hay además una API de solo lectura, `GET https://is-agentic.com/api/v1/report?url=https://{dominio}`, que sirve el último reporte **ya corrido**: sobre un dominio que nadie escaneó devuelve 404, porque no dispara scans. El CLI sí los dispara, y después la API ya lo tiene.
+
+**Qué mide y qué no.** Mide si un agente que llega al sitio puede leerlo y confiar en él: identidad en JSON-LD, páginas de About / Contact / Privacy con contenido real, un 404 que se comporta, negociación de contenido en Markdown, y un archivo de instrucciones para agentes. **No mide citación.** Un score alto no dice que un motor te recomiende, y el único check que se le acerca (`brand-search-accuracy`) depende de que la marca ya esté indexada, así que en un dominio nuevo falla por definición. Sirve para lo que esta sección no tenía: convertir "los fixes técnicos están hechos" en un número reproducible, con foto del antes y del después.
+
+**Dónde entra en el piloto.** Los requisitos se construyen en `s3b-build-landings` (van en el prompt de build) y el score se registra en `s3f-pre-launch-validation`, como ítem que se anota y no bloquea. Es también la foto del "antes" que pide el invariante de medición, para el lado técnico.
+
+**Y la corrección que trae sobre `llms.txt`.** El menú de arriba lo da por descartable y, **para citación, lo sigue siendo**: ningún proveedor grande confirmó que lo lea. El scan lo premia por otro motivo — su check `agent-instruction` busca un archivo que diga **cuándo** conviene usarte, y ese archivo suele ser el mismo. Descartable como palanca de citación, barato como instrucción para el agente que ya llegó. Son dos objetivos distintos y conviene no mezclarlos.
+
+## 4. Tensión conocida con `lead-magnet-y-nurture`
 
 Ese componente define que el blog de respaldo arranca **`noindex` por default**, y dice explícitamente que su rol en un piloto no es SEO. Era la decisión correcta cuando el único beneficio de indexar era posicionar a meses vista.
 
 Hoy tiene un costo que antes no tenía: **un blog en `noindex` tampoco puede ser citado por un motor generativo**, y esa citación no tarda meses. **La tensión queda anotada, no resuelta**: si el piloto va a apoyarse en GEO, la decisión de `noindex` deja de ser gratis y hay que tomarla a propósito, no por default.
 
-## 4. Troubleshooting
+## 5. Troubleshooting
 
 - **"No aparecemos y hace semanas que publicamos."** Antes de tocar contenido, verificar que los bots de búsqueda en vivo no estén bloqueados y que el canonical no apunte a otro dominio. El 90% de las veces está ahí.
 - **"Publicamos veinte variantes de la misma pregunta y bajó."** Es el efecto esperado. Son veinte preguntas distintas, no la misma veinte veces.
 - **"El caso que vi tardó cuatro días, el nuestro no arranca."** Ese caso corrió sobre un dominio ya indexado. Un dominio nuevo no tiene ese piso.
 - **"Medimos y da cero."** Antes de concluir, revisar que los prompts del set correspondan a la intención real del producto. Un set escrito para la categoría equivocada da cero para siempre y ese cero no dice nada.
+- **"El scan nos da 80 y nadie nos cita."** Son dos cosas distintas. El scan mide si un agente puede leerte; la cita se gana con cobertura de intención (sección 1). El score alto es condición, no causa.

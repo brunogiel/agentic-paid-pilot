@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.7.0 (2026-09-24)
+
+- **Nuevo: la landing del piloto se chequea contra un scanner de agent-readability antes de encender.**
+  `npx -y is-agentic@latest {dominio}` escanea un dominio público en ~20-25 s y devuelve un score
+  sobre 100 con los checks que no pasaron y el fix de cada uno. Es gratis y no pide cuenta.
+  `s3b-build-landings` lo corre después del deploy y `s3f-pre-launch-validation` lo anota en la
+  punch-list.
+- **Los requisitos se construyen, no se parchean.** El cambio grande no es correr el scan: es que el
+  prompt de build de `s3b` ahora pide de entrada lo que el scan mide — JSON-LD con un tipo de
+  identidad, `/about` `/contact` `/privacy` con contenido real, un 404 que devuelve 404 y un cuerpo
+  en Markdown, y un `llms.txt` que dice **cuándo** conviene usarte. De entrada cuesta minutos;
+  después es tocar una landing que ya está comprando tráfico. Dos landings de pilotos reales, ya en
+  producción, dieron 83 y 71 sobre 100: los huecos eran todos de esta lista.
+- **Se anota, no bloquea.** El ítem de `s3f` registra el score y los `essential` que fallan, y
+  explícitamente **no** frena el encendido: un score bajo no impide que el ad convierta. Lo que ya
+  bloqueaba sigue bloqueando por su vía (si falta `/privacy`, el FAIL lo tira el bloque legal).
+- **El componente `geo-y-citacion-llm` suma la sección que le faltaba y se corrige a sí mismo.**
+  Separa *ser citado* (lo que ese componente ya cubría) de *ser legible por un agente* (lo que el
+  scan mide), y matiza su propio veredicto sobre `llms.txt`: sigue siendo descartable como palanca
+  de citación, pero el check `agent-instruction` premia un archivo que diga cuándo usarte, y suele
+  ser el mismo archivo.
+- **Dos trampas documentadas, las dos verificadas contra el servicio.** (1) La API
+  (`GET /api/v1/report?url=...`) es de **solo lectura**: sobre un dominio que nadie escaneó devuelve
+  404 `report_not_found`, y pegarle por curl a `/scan/{dominio}` devuelve la página sin disparar
+  nada — el que dispara el scan es el CLI. (2) El check `brand-search-accuracy` falla por definición
+  en un dominio de piloto recién registrado, porque mide que una búsqueda de tu marca devuelva tu
+  dominio. No se persigue y no cuenta como abierto.
+
 ## 1.6.0 (2026-09-22)
 
 - **Nuevo: acelerador OPCIONAL para clasificar en volumen en el research** (`scripts/` +

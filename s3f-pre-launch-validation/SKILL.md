@@ -1,7 +1,7 @@
 ---
 name: pre-launch-validation
 description: >-
-  Etapa 3 del playbook lanzar-piloto. Checklist determinístico pre-encendido: links y landings vivos, forms envían y llegan al CRM, tracking dispara en GTM preview, billing activo en Google Ads y Meta, privacy y terms publicadas, budgets y gates configurados en las plataformas, campañas en estado pausa con settings correctos. Casi todo [DET]. Usar cuando el usuario diga "validá el piloto antes de encender", "pre-launch", "punch-list", "chequéen que todo está ok", "estamos listos para encender", "prendamos las campañas", "falta algo antes de lanzar", "armá el checklist de validación". Output: checklist con PASS/FAIL por ítem; gate de "no encender hasta que todo esté verde". NO enciende las campañas sola: espera OK explícito del usuario.
+  Etapa 3 del playbook lanzar-piloto. Checklist determinístico pre-encendido: links y landings vivos, forms envían y llegan al CRM, tracking dispara en GTM preview, billing activo en Google Ads y Meta, privacy y terms publicadas, scan de agent-readability de las landings, budgets y gates configurados en las plataformas, campañas en estado pausa con settings correctos. Casi todo [DET]. Usar cuando el usuario diga "validá el piloto antes de encender", "pre-launch", "punch-list", "chequéen que todo está ok", "estamos listos para encender", "prendamos las campañas", "falta algo antes de lanzar", "armá el checklist de validación". Output: checklist con PASS/FAIL por ítem; gate de "no encender hasta que todo esté verde". NO enciende las campañas sola: espera OK explícito del usuario.
 ---
 
 # Etapa 3 · pre-launch-validation — la punch-list que cierra el piloto antes de prender
@@ -41,6 +41,7 @@ Checklist determinístico de todos los pre-requisitos técnicos, legales y opera
 - El lead de test llega al CRM destino (Supabase / Notion / sheet / mail).
 - Los UTMs pasan del ad a la landing y de la landing al CRM (`?utm_source=test` → verificar en el CRM que el campo llegó).
 - El GCLID se captura en el form si aplica (pass `?gclid=test123`, verificar en el submit).
+- **Agent-readability:** `npx -y is-agentic@latest {dominio}` sobre cada dominio live (~20-25 s). Se anota el `score` y los checks `essential` que no pasaron. **No bloquea el encendido**: un score bajo no impide que el ad convierta, y este ítem existe para que el número quede registrado antes de tener tráfico encima, no para frenar el piloto. Lo que sí bloquea lo tira el Paso 4 por su propia vía — si el check de trust anchors falla porque `/privacy` no existe, el FAIL es legal, no de agent-readability.
 
 **Paso 2 [DET] — Tracking.** Por plataforma activa:
 - **Google Ads:** conversion action primaria configurada (category Lead, count One per click, include in Conversions = YES); tag disparando en GTM preview en la thank-you URL.
@@ -92,7 +93,7 @@ Checklist determinístico de todos los pre-requisitos técnicos, legales y opera
 
 ## Output esperado
 
-`workspace/pre-launch-checklist.md`: checklist con estado PASS / FAIL / N/A por ítem, agrupado por bloque (landings+forms, tracking, billing, legal, campañas, creativos) + tabla de FAIL pendientes con acción y owner + veredicto final ("EN VERDE, esperando tu OK" o "BLOQUEADO hasta resolver N ítems").
+`workspace/pre-launch-checklist.md`: checklist con estado PASS / FAIL / N/A por ítem, agrupado por bloque (landings+forms, tracking, billing, legal, campañas, creativos), con el score de `is-agentic` por dominio en el bloque de landings, + tabla de FAIL pendientes con acción y owner + veredicto final ("EN VERDE, esperando tu OK" o "BLOQUEADO hasta resolver N ítems").
 
 ## Success metrics
 
