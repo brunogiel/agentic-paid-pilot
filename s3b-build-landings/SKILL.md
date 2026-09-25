@@ -27,6 +27,30 @@ Convierte el copy aprobado en landings live: repo, build, dominios y deploy. El 
 
 **Paso 1 [DET] — Dominios.** Verificar disponibilidad (RDAP para TLDs regionales; MCP de dominios para `.com`), registrar los elegidos del backbone y conectarlos a Vercel. Regla: un dominio por idioma, mismo deploy; cada campaña apunta su Final URL al dominio del idioma correcto.
 
+🔴 **Antes de comprar: el nombre de la marca decide si vas a poder tener búsqueda de marca.** Un
+nombre que es **una palabra genérica del rubro pegada** (del tipo `<categoría>ya`, `<categoría>ahora`,
+`<categoría>fácil`) se lee como un error de tipeo, no como un nombre propio. Medido sobre un piloto
+real en septiembre de 2026: buscando la marca, el buscador contesta *«Quizás quisiste decir:
+"<categoría>"»*, el dominio **no aparece en toda la página de resultados** pese a estar indexado, y el
+panel de la derecha se lo queda **un competidor**. Consecuencias que se pagan todos los meses: el
+tráfico de la propia marca hay que **comprarlo** —y la keyword de marca suele ser la que mejor
+convierte—, y cualquier competidor puede pujar por tu nombre sin que tengas un resultado orgánico que
+lo defienda.
+
+Es de las pocas decisiones del piloto que **no se puede deshacer barato**: cuando lo notás, ya
+compraste el dominio, armaste la marca y pusiste plata en ads. Chequeo de 30 segundos antes de
+registrar, sobre cada candidato: **buscá el nombre en Google y mirá si el buscador lo autocorrige**.
+Si lo autocorrige, es una palabra del idioma disfrazada de marca. Un nombre con una letra de más o de
+menos, una partícula que no sea del rubro, o dos palabras que no se usan juntas, no tiene ese
+problema. **Esto no se arregla después con SEO**: lo único que empuja en contra es construir entidad
+(perfiles propios declarados con `sameAs`, ficha del negocio, menciones), y eso tarda meses.
+
+Si el nombre ya está elegido y tiene este problema, lo que más rápido mueve es **abrir la ficha del
+negocio en el buscador** (hoy la tiene un competidor) y declarar los perfiles oficiales en el JSON-LD
+con `sameAs`. ⚠ La ficha tiene un costo que conviene decidir a ojos abiertos: **las reseñas no se
+pueden desactivar**, y en un negocio donde se rechaza gente eso es una superficie nueva. Si igual no
+se abre, el `sameAs` y los perfiles propios construyen lo mismo, más lento.
+
 **Paso 2 [LATENT] — Prompt de build.** Escribir el prompt en 2 partes: (a) diseño visual (estructura de secciones, mood, mobile-first, base compartida entre variantes) y (b) agente de código para convertirlo en sitio real: copy de la Parte B, rutas, form, motor `?v=` (dynamic text del hero por vertical), thank-you page, y los hooks de tracking vacíos (gtag/fbq/dataLayer) para que `setup-tracking` los llene.
 
 **Lo que la landing necesita para que un agente la lea, va en el prompt de build y no se parchea después:** JSON-LD con un tipo de identidad (`Organization` o `LocalBusiness` para un negocio de servicios) con `name`, `url`, `description`, `contactPoint` y `address`; `/about`, `/contact` y `/privacy` con 500+ caracteres reales cada una (la de privacy es obligatoria igual para que Meta apruebe el ad, así que las otras dos son el único trabajo nuevo); un 404 que devuelva status 404 de verdad y un cuerpo en Markdown cuando el request trae `Accept: text/markdown`; y un `llms.txt` que diga **cuándo** conviene usarte, no qué vendés. Construirlo de entrada cuesta minutos. Agregarlo después es tocar una landing que ya está comprando tráfico.

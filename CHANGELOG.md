@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.7.2 (2026-09-25)
+
+- **`s3b` suma un criterio que se decide antes de comprar el dominio y no se puede deshacer barato:
+  si el nombre de la marca es una palabra genérica del rubro pegada, no vas a tener búsqueda de
+  marca.** Medido sobre un piloto real: el buscador autocorrige el nombre a la categoría
+  (*«Quizás quisiste decir…»*), el dominio **no aparece en toda la página de resultados** pese a estar
+  indexado, y el panel de la derecha se lo queda un competidor. El costo se paga todos los meses: el
+  tráfico de la marca propia se compra, y la keyword de marca suele ser la que mejor convierte de la
+  cuenta.
+- **El chequeo que lo evita cuesta 30 segundos y no estaba escrito en ningún lado:** antes de
+  registrar, buscá cada nombre candidato y mirá si el buscador lo autocorrige. Si lo autocorrige, es
+  una palabra del idioma disfrazada de marca.
+- **Y qué hacer si el nombre ya está elegido**, con el trade-off explicitado: la ficha del negocio es
+  lo que más rápido mueve, pero **las reseñas no se pueden desactivar** y en un negocio donde se
+  rechaza gente eso es una superficie nueva. El camino sin ficha (`sameAs` + perfiles propios)
+  construye lo mismo, más lento.
+
 ## 1.7.1 (2026-09-25)
 
 - **Tres trampas del scanner, medidas corriéndolo de verdad sobre dos dominios en producción.** El
