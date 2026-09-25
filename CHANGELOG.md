@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.7.1 (2026-09-25)
+
+- **Tres trampas del scanner, medidas corriéndolo de verdad sobre dos dominios en producción.** El
+  cambio de 1.7.0 se aplicó a un piloto real y las tres aparecieron en la primera vuelta:
+  (1) **el CLI no re-escanea** —devuelve el reporte guardado y solo escanea cuando no existe ninguno,
+  así que después de un fix se lee el número viejo y parece que no sirvió; se re-mide con el botón
+  **Rescan** de la página del reporte, y la pista de que estás leyendo lo viejo es que el path
+  aleatorio de la sonda del 404 se repite. (2) **`agent-instruction` busca la frase en inglés**: con
+  el encabezado en castellano el check seguía en rojo con el archivo publicado; alcanzó con dejarlo
+  bilingüe, sin tocar el contenido. (3) **el scanner a veces infiere una API que no existe** y activa
+  checks esenciales de OpenAPI; se verificó que no es determinístico (mismo build, mismo robots.txt,
+  mismo llms.txt: se los activó a un dominio y al otro no), así que se anota y no se rompe el sitio
+  real para contentarlo.
+- **Lo que dio, para calibrar expectativas:** los dos dominios partían de 71/100. Con los fixes del
+  playbook, uno terminó en **100/100** y el otro en **78/100**, y toda la diferencia era la familia de
+  checks de API que el scanner le inventó a uno solo. Los checks que el playbook sí controla
+  (negociación de Markdown, 404, llms.txt, trust anchors, Organization) quedaron iguales en los dos.
+
 ## 1.7.0 (2026-09-24)
 
 - **Nuevo: la landing del piloto se chequea contra un scanner de agent-readability antes de encender.**
