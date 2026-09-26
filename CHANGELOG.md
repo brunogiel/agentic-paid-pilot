@@ -3,12 +3,11 @@
 ## 1.7.2 (2026-09-25)
 
 - **`s3b` suma un criterio que se decide antes de comprar el dominio y no se puede deshacer barato:
-  si el nombre de la marca es una palabra genérica del rubro pegada, no vas a tener búsqueda de
-  marca.** Medido sobre un piloto real: el buscador autocorrige el nombre a la categoría
+  si el nombre de la marca es el sustantivo de la categoría pegado a una palabra corriente, no vas
+  a tener búsqueda de marca.** Medido sobre un piloto real: el buscador autocorrige el nombre a la categoría
   (*«Quizás quisiste decir…»*), el dominio **no aparece en toda la página de resultados** pese a estar
-  indexado, y el panel de la derecha se lo queda un competidor. El costo se paga todos los meses: el
-  tráfico de la marca propia se compra, y la keyword de marca suele ser la que mejor convierte de la
-  cuenta.
+  indexado, y el panel de la derecha se lo queda un competidor. El costo se paga todos los meses: el tráfico de
+  quien te busca por tu nombre hay que comprarlo, que es justo el clic que debería ser gratis.
 - **El chequeo que lo evita cuesta 30 segundos y no estaba escrito en ningún lado:** antes de
   registrar, buscá cada nombre candidato y mirá si el buscador lo autocorrige. Si lo autocorrige, es
   una palabra del idioma disfrazada de marca.

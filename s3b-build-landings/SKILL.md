@@ -28,14 +28,15 @@ Convierte el copy aprobado en landings live: repo, build, dominios y deploy. El 
 **Paso 1 [DET] — Dominios.** Verificar disponibilidad (RDAP para TLDs regionales; MCP de dominios para `.com`), registrar los elegidos del backbone y conectarlos a Vercel. Regla: un dominio por idioma, mismo deploy; cada campaña apunta su Final URL al dominio del idioma correcto.
 
 🔴 **Antes de comprar: el nombre de la marca decide si vas a poder tener búsqueda de marca.** Un
-nombre que es **una palabra genérica del rubro pegada** (del tipo `<categoría>ya`, `<categoría>ahora`,
-`<categoría>fácil`) se lee como un error de tipeo, no como un nombre propio. Medido sobre un piloto
+nombre formado por **el sustantivo de la categoría más una palabra corriente**, sin separación, se lee
+como un error de tipeo y no como un nombre propio. Pasa con cualquier adjetivo o adverbio de uso
+común pegado al rubro; el patrón no depende de cuál sea. Medido sobre un piloto
 real en septiembre de 2026: buscando la marca, el buscador contesta *«Quizás quisiste decir:
 "<categoría>"»*, el dominio **no aparece en toda la página de resultados** pese a estar indexado, y el
-panel de la derecha se lo queda **un competidor**. Consecuencias que se pagan todos los meses: el
-tráfico de la propia marca hay que **comprarlo** —y la keyword de marca suele ser la que mejor
-convierte—, y cualquier competidor puede pujar por tu nombre sin que tengas un resultado orgánico que
-lo defienda.
+panel de la derecha se lo queda **un competidor**. Consecuencias que se pagan todos los meses: **el tráfico de
+gente que te busca a vos por tu nombre hay que comprarlo**, que es justo el clic que debería ser
+gratis, y cualquier competidor puede pujar por tu marca sin que tengas un resultado orgánico que lo
+defienda.
 
 Es de las pocas decisiones del piloto que **no se puede deshacer barato**: cuando lo notás, ya
 compraste el dominio, armaste la marca y pusiste plata en ads. Chequeo de 30 segundos antes de
